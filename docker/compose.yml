@@ -1,0 +1,29 @@
+services:
+  postgresql:
+    image: postgres:16
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./db/postgres_data:/var/lib/postgresql/data
+
+  migrations:
+    image: liquibase/liquibase:4.25
+    env_file:
+      - .env
+    depends_on:
+      - postgresql
+    command:
+      - --changelog-file=master.yml
+      - --driver=org.postgresql.Driver
+      - --url=jdbc:postgresql://postgresql:5432/${POSTGRES_DB}
+      - --username=${POSTGRES_USER}
+      - --password=${POSTGRES_PASSWORD}
+      - update
+    volumes:
+      - ./db/liquibase:/liquibase/changelog
