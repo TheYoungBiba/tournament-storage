@@ -1,0 +1,38 @@
+    post:
+      tags:
+        - user
+      requestBody:
+        description: "The details about achievement"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenAchievementRequest'
+      responses:
+        '201':
+          description: "The achievement was added"
+        '400':
+          description: "Operation was failed"       
+
+components:
+  schemas:
+    SportsmenAchievementRequest:
+      type: object
+      required:
+        - sportsmen_sport_id
+        - place
+        - achieved_at_year
+      properties:
+        sportsmen_sport_id:
+          type: integer
+        place:
+          type: integer
+        tournament_id:
+          type: integer
+        achieved_with_category_id:
+          type: integer
+        description:
+          type: string
+        achieved_at_year:
+          type: string
+          format: date

@@ -1,0 +1,48 @@
+    post:
+      tags:
+        - user
+      summary: "To add judge role"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The judge role"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JudgeRequest'
+      responses:
+        '201':
+          description: "The judge role was added"
+        '400':
+          description: "Operation was failed"
+          
+    delete:
+      tags:
+        - user
+      summary: "To delete judge role by id"
+      parameters:
+       - in: path
+         name: id
+         required: true
+         schema:
+           type: integer
+         description: "User id"
+      responses:
+       '204':
+         description: "Removable was successful"
+
+components:
+  schemas:
+    JudgeRequest:
+      type: object
+      required:
+        - status_id
+      properties:
+        status_id:
+          type: integer
+          description: "ID статуса судьи"
