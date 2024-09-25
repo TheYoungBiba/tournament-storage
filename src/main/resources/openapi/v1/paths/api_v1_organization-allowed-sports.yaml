@@ -1,0 +1,15 @@
+post:
+  tags:
+    - organization
+  summary: Add allowed sport to organization
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/OrganizationAllowedSportRequest.yaml
+  responses:
+    '201':
+      description: Sport added to organization
+    '400':
+      description: Operation was failed

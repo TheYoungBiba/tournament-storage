@@ -1,0 +1,24 @@
+type: object
+required:
+  - login
+  - email
+  - phone_number
+  - password
+properties:
+  login:
+    type: string
+  email:
+    type: string
+    format: email
+  phone_number:
+    type: string
+  photo_id:
+    type: string
+  first_name:
+    type: string
+  last_name:
+    type: string
+  patronymic:
+    type: string
+  password:
+    type: string

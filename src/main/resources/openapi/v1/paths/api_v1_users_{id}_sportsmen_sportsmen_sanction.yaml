@@ -1,0 +1,58 @@
+get:
+  tags:
+    - user
+  summary: Get sanctions for a specific sportsman
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+      description: ID of the sportsman
+  responses:
+    '200':
+      description: Sanctions for the sportsman
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas\SportsmenSanctionResponse.yaml
+    '400':
+      description: Operation failed
+put:
+  tags:
+    - user
+  summary: Update sanctions for a sportsman
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    description: Updated data for sanctions
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\SportsmenSanctionRequest.yaml
+  responses:
+    '200':
+      description: Sanctions were successfully updated
+    '400':
+      description: Operation failed
+delete:
+  tags:
+    - user
+  summary: Remove sanctions from a sportsman
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+      description: ID of the sportsman
+  responses:
+    '204':
+      description: Sanction was successfully removed
+    '400':
+      description: Operation failed

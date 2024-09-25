@@ -1,0 +1,30 @@
+get:
+  tags:
+    - tournament
+  summary: Shows all the existed tournaments
+  description: All the tournaments from every sport direction
+  responses:
+    '200':
+      description: operation was successful
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/TournamentResponse.yaml
+    '400':
+      description: operation was failed
+post:
+  summary: Make a new tournament
+  requestBody:
+    description: All the details data
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/TournamentRequest.yaml
+  responses:
+    '201':
+      description: Operation was successful
+    '400':
+      description: Operation was failed

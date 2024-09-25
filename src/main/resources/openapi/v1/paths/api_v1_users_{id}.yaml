@@ -1,0 +1,51 @@
+get:
+  tags:
+    - user
+  summary: To get user by ID
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Данные пользователя
+put:
+  tags:
+    - user
+  summary: To update user by ID
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    description: The data for user update
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/UserRequest.yaml
+  responses:
+    '201':
+      description: Operation was successful
+    '400':
+      description: Operation was failed
+delete:
+  tags:
+    - user
+  summary: To delete user by id
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+      description: User id
+  responses:
+    '204':
+      description: Removable was successful
+    '400':
+      description: Operation was failed

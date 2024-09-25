@@ -1,0 +1,7 @@
+type: object
+required:
+  - organization_id
+properties:
+  organization_id:
+    type: integer
+    description: ID организации, связанной с пользователем

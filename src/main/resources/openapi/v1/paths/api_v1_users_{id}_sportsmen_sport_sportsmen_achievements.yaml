@@ -1,0 +1,59 @@
+get:
+  tags:
+    - user
+  summary: To get the sportsman achievements by sportsmen_id
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+      description: sportsmen_id
+  responses:
+    '200':
+      description: Achievement was found
+      content:
+        application/json:
+          schema:
+            items:
+              $ref: ../components/schemas/SportsmenAchievementResponse.yaml
+    '400':
+      description: Operation was failed
+put:
+  tags:
+    - user
+  summary: To update the sportsman achievement by sportsmen_achievement id
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+      description: Id from sportsmen_achievement table
+  requestBody:
+    description: Updated data about achievement
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components\schemas\SportsmenAchievementRequest.yaml
+  responses:
+    '201':
+      description: The achievement was updated
+    '400':
+      description: Operation was failed
+delete:
+  tags:
+    - user
+  summary: To delete sportsmen achievement by id from sportsmen_achievement table
+  parameters:
+    - in: path
+      name: id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '204':
+      description: The achievement was removed
+    '400':
+      description: Operation was failed

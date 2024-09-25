@@ -1,0 +1,31 @@
+post:
+  tags:
+    - user
+  summary: Create new user
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/UserRequest.yaml
+  responses:
+    '201':
+      description: User was created
+    '400':
+      description: Operation was failed
+get:
+  tags:
+    - user
+  summary: Show all the existed users
+  description: To get list of every user from database
+  responses:
+    '200':
+      description: operation was successful
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/UserResponse.yaml
+    '400':
+      description: operation was failed

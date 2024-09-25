@@ -1,0 +1,9 @@
+type: object
+required:
+  - organization_id
+  - sport_id
+properties:
+  organization_id:
+    type: integer
+  sport_id:
+    type: integer

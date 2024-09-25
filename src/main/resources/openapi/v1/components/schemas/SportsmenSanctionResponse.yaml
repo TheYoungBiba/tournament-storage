@@ -1,0 +1,9 @@
+type: object
+properties:
+  sportsmen_id:
+    type: integer
+  sanction_id:
+    type: integer
+  disqualification:
+    type: string
+    format: date

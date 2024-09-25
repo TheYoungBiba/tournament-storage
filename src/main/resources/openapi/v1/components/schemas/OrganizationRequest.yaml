@@ -1,0 +1,15 @@
+type: object
+required:
+  - name
+  - ogrn
+  - reg_address
+  - inn
+properties:
+  name:
+    type: string
+  ogrn:
+    type: string
+  reg_address:
+    type: string
+  inn:
+    type: string

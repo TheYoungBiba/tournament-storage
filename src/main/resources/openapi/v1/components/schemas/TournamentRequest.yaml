@@ -1,0 +1,31 @@
+type: object
+required:
+  - name
+  - place
+  - start_time
+  - end_time
+  - is_official
+  - tournament_parts
+properties:
+  name:
+    type: string
+  sport_id:
+    type: integer
+  place:
+    type: string
+  start_time:
+    type: string
+    format: date
+  end_time:
+    type: string
+    format: date
+  is_official:
+    type: boolean
+  participation_fee:
+    type: integer
+  max_count_commands:
+    type: integer
+  tournament_parts:
+    type: array
+    items:
+      $ref: .\TournamentPartRequest.yaml

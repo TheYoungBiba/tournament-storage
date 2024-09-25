@@ -1,0 +1,22 @@
+get:
+  tags:
+    - tournament
+  summary: Get a list of judges assigned to a tournament part
+  parameters:
+    - in: path
+      name: tournament_part_id
+      required: true
+      schema:
+        type: integer
+      description: Tournament Part ID
+  responses:
+    '200':
+      description: List of judges
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/TournamentPartJudgeResponse.yaml
+    '400':
+      description: Operation was failed

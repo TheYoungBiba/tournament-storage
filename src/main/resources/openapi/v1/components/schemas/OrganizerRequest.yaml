@@ -1,0 +1,15 @@
+type: object
+required:
+  - email
+  - status
+properties:
+  email:
+    type: string
+    format: email
+    description: Электронная почта организатора
+  status:
+    type: string
+    description: Статус организатора
+  inn:
+    type: string
+    description: ИНН организатора
