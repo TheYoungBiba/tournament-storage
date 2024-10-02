@@ -38,7 +38,9 @@ paths:
           description: "Internal Server Error"
 
     post:
-      operationId: createTournament 
+      tags:
+        - tournament
+      operationId: createTournament
       summary: "Make a new tournament"
       requestBody:
         description: "All the details data"
