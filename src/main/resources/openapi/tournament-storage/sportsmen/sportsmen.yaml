@@ -1,0 +1,582 @@
+openapi: 3.0.2
+info:
+  title: "tournament-storage"
+  description: "It's easy to manage your sport tournament or league"
+  version: "1.0"
+  contact:
+    name: "SportManager"
+    url: "https://sportmanager.com/support"
+    email: "sportmanager@gmail.com"
+tags:
+  - name: sportsmen
+    description: "Everything about sportsmen"
+
+paths:
+  /api/v1/users/sportsmen:
+    get:
+      tags:
+        - sportsmen
+      operationId: getSportsmen
+      summary: "Show all the existed sportsmen"
+      description: "To get list of every sportsman from database"
+      responses:
+        '200':
+          description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SportsmenResponse'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
+  /api/v1/users/{id}/sportsmen:
+    post:
+      tags:
+        - sportsmen
+      operationId: getSportsmanById 
+      summary: "To add sportsman role for user"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The sportsmen data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenRequest'
+      responses:
+        '201':
+          description: "Role was added successful"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+          
+    delete:
+      tags:
+        - user
+      operationId: removeSportsmanById
+      summary: "To delete sportsman role by id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "User id"
+      responses:
+        '204':
+         description: "Removable was successful"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+
+         
+  /api/v1/users/sportsmen_sport:
+    post:
+      tags:
+        - sportsmen
+      operationId: addNewSportForSportsman
+      summary: "To add sportsman to new sport"
+      requestBody:
+        description: "The sportsman data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenSportRequest'
+      responses:
+        '201':
+          description: "Opearation was successful"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+
+
+  /api/v1/users/{id}/sportsmen_sport:
+    get:
+      tags:
+        - sportsmen
+      operationId: getSportsmanInfo
+      summary: "To get sportsman data by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Operation was successfful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSportResponse'
+        '400':
+          description: "Bad request" 
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
+    put:
+      tags:
+        - sportsmen
+      operationId: updateSportsmanById
+      summary: "To update sportsman data in sport by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The updated sportsman data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenSportRequest'
+      responses:
+        '201':
+          description: "Operation was successful"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+
+    delete:
+      tags:
+        - user
+      operationId: removeSportsmanFromSportById
+      summary: "To remove sportsman from sport by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: "Sportsman was removed from sport"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+
+  /api/v1/users/sportsmen_sport/sportsmen_achievements:
+    post:
+      tags:
+        - sportsmen
+      summary: "To add new sportsmen achievement"
+      operationId: createSportsmenAchievement
+      requestBody:
+        description: "The details about achievement"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenAchievementRequest'
+      responses:
+        '201':
+          description: "The achievement was added"
+        '400':
+          description: "Bad request"       
+        '500':
+          description: "Internal Server Error"
+
+  /api/v1/users/{id}/sportsmen_sport/sportsmen_achievements:
+    get:
+      tags:
+        - sportsmen
+      operationId: getSportsmanAchievements
+      summary: "To get the sportsman achievements by sportsmen_id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "sportsmen_id"
+      responses:
+        '200':
+          description: "Achievement was found"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SportsmenAchievementResponse'
+        '400':
+          description: "Bad request" 
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
+    put:
+      tags:
+        - sportsmen
+      operationId: updateSportsmanAchievementBySportsmenAchievementId
+      summary: "To update the sportsman achievement by sportsmen_achievement_id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "Id from sportsmen_achievement table"
+      requestBody:
+        description: "Updated data about achievement"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenAchievementRequest'
+      responses:
+        '201':
+          description: "The achievement was updated"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+        
+    delete:
+      tags:
+        - sportsmen
+      operationId: removeSportsmanAchievementBySportsmenAchhievementId
+      summary: "To delete sportsmen achievement by id from sportsmen_achievement table"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: "The achievement was removed"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+
+  /api/v1/users/sportsmen/sportsmen_sanction:
+    post:
+      tags:
+        - sportsmen
+      operationId: createSanction
+      summary: "Add a sanction to a sportsman"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenSanctionRequest'
+      responses:
+        '201':
+          description: "Sanction was added to sportsman"
+        '400':
+          description: "Operation failed"
+        '500':
+          description: "Internal Server Error"
+
+    get:
+      tags:
+        - sportsmen
+      operationId: getSanctions
+      summary: "Get all sanctions for all sportsmen"
+      responses:
+        '200':
+          description: "List of all sportsmen sanctions"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SportsmenSanctionResponse'
+        '400':
+          description: "Operation failed"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
+  /api/v1/users/{id}/sportsmen/sportsmen_sanction:
+    get:
+      tags:
+        - sportsmen
+      operationId: getSanctionsBySportsmenId
+      summary: "Get sanctions for a specific sportsman"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "ID of the sportsman"
+      responses:
+        '200':
+          description: "Sanctions for the sportsman"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSanctionResponse'
+        '400':
+          description: "Operation failed"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
+    put:
+      tags:
+        - sportsmen
+      operationId: updateSanctionBySportsmenId
+      summary: "Update sanctions for a sportsman"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "Updated data for sanctions"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenSanctionRequest'
+      responses:
+        '200':
+          description: "Sanctions were successfully updated"
+        '400':
+          description: "Operation failed"
+        '500':
+          description: "Internal Server Error"
+
+    delete:
+      tags:
+        - sportsmen
+      operationId: removeSanctionBySportsmenId
+      summary: "Remove sanctions from a sportsman"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "ID of the sportsman"
+      responses:
+        '204':
+          description: "Sanction was successfully removed"
+        '400':
+          description: "Operation failed"
+        '500':
+          description: "Internal Server Error"
+
+components:
+  schemas:
+    SportsmenResponse:
+      type: object
+      required:
+        - user_id
+        - birthday
+        - is_male
+      properties:
+        user_id:
+          type: integer
+        birthday:
+          type: string
+          format: date
+        is_male:
+          type: boolean
+        height:
+          type: number
+          format: float
+        height_updated_at:
+          type: string
+          format: date-time
+        height_checked_at:
+          type: string
+          format: date-time
+        weight:
+          type: number
+          format: float
+        weight_updated_at:
+          type: string
+          format: date-time
+        weight_checked_at:
+          type: string
+          format: date-time
+        club_id:
+          type: integer
+          
+    SportsmenSportRequest:
+      type: object
+      required:
+        - sport_id
+        - sportsmen_id
+        - rating
+      properties:
+        sport_id:
+          type: integer
+        sportsmen_id:
+          type: integer
+        category_id:
+          type: integer
+        role_id:
+          type: integer
+        rank:
+          type: string
+        license:
+          type: string
+        rating:
+          type: number
+          format: float
+
+    SportsmenRequest:
+      type: object
+      required:
+        - user_id
+        - birthday
+        - is_male
+      properties:
+        user_id:
+          type: integer
+        birthday:
+          type: string
+          format: date
+        is_male:
+          type: boolean
+        height:
+          type: number
+          format: float
+        height_updated_at:
+          type: string
+          format: date-time
+        height_checked_at:
+          type: string
+          format: date-time
+        weight:
+          type: number
+          format: float
+        weight_updated_at:
+          type: string
+          format: date-time
+        weight_checked_at:
+          type: string
+          format: date-time
+        club_id:
+          type: integer
+          
+    SportsmenSportResponse:
+      type: object
+      required:
+        - sport_id
+        - sportsmen_id
+        - rating
+      properties:
+        sport_id:
+          type: integer
+        sportsmen_id:
+          type: integer
+        category_id:
+          type: integer
+        role_id:
+          type: integer
+        rank:
+          type: string
+        license:
+          type: string
+        rating:
+          type: number
+          format: float
+          
+    TournamentMakerRequest:
+      type: object
+      required:
+        - organization_id
+      properties:
+        organization_id:
+          type: integer
+
+    SportsmenAchievementRequest:
+      type: object
+      required:
+        - sportsmen_sport_id
+        - place
+        - achieved_at_year
+      properties:
+        sportsmen_sport_id:
+          type: integer
+        place:
+          type: integer
+        tournament_id:
+          type: integer
+        achieved_with_category_id:
+          type: integer
+        description:
+          type: string
+        achieved_at_year:
+          type: string
+          format: date
+
+    SportsmenAchievementResponse:
+      type: object
+      required:
+        - sportsmen_sport_id
+        - place
+        - achieved_at_year
+      properties:
+        sportsmen_sport_id:
+          type: integer
+        place:
+          type: integer
+        tournament_id:
+          type: integer
+        achieved_with_category_id:
+          type: integer
+        description:
+          type: string
+        achieved_at_year:
+          type: string
+          format: date
+          
+    SportsmenSanctionRequest:
+      type: object
+      required:
+        - sportsmen_id
+        - sanction_id
+      properties:
+        sportsmen_id:
+          type: integer
+          description: "ID of the sportsman"
+        sanction_id:
+          type: integer
+          description: "ID of the sanction"
+        disqualification:
+          type: string
+          format: date
+          description: "Disqualification date, if applicable"
+
+    SportsmenSanctionResponse:
+      type: object
+      properties:
+        sportsmen_id:
+          type: integer
+        sanction_id:
+          type: integer
+        disqualification:
+          type: string
+          format: date        

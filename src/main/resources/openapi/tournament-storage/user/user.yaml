@@ -1,0 +1,542 @@
+openapi: 3.0.2
+info:
+  title: "tournament-storage"
+  description: "It's easy to manage your sport tournament or league"
+  version: "1.0"
+  contact:
+    name: "SportManager"
+    url: "https://sportmanager.com/support"
+    email: "sportmanager@gmail.com"
+tags:
+  - name: tournament
+    description: "Everything about tournaments"
+  - name: user
+    description: "Everything about users"
+  - name: sportsmen
+    description:
+  - name: other
+    description:
+  - name: season
+    description:
+  - name: organization
+    description:
+
+paths:
+  /api/v1/users:
+    post:
+      tags:
+        - user
+      operationId: createUser
+      summary: "Create new user"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: "User was created"
+        '400':
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
+
+    get:
+      tags:
+        - user
+      operationId: getUsers
+      summary: "Show all the existed users"
+      description: "To get list of every user from database"
+      responses:
+        '200':
+          description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
+  /api/v1/users/{id}:
+    get:
+      tags:
+        - user
+      operationId: getUserById
+      summary: "To get user by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Данные пользователя"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
+    put:
+      tags:
+        - user
+      operationId: updateUserById
+      summary: "To update user by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The data for user update"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: "Operation was successful"
+        '400':
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"          
+
+    delete:
+      tags:
+        - user
+      operationId: removeUserById
+      summary: "To delete user by id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "User id"
+      responses:
+        '204':
+          description: "Removable was successful"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+
+  /api/v1/users/tournament_maker:
+    get:
+      tags:
+        - user
+      operationId: getTournamentMakers
+      summary: "Show all the existed tournament makers"
+      description: "To get list of every tournament maker from database"
+      responses:
+        '200':
+          description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TournamentMakerResponse'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+  
+  /api/v1/users/{id}/tournament_maker:
+    post:
+      tags:
+        - user
+      operationId: addTournamentMakerRoleByUserId
+      summary: "To add tournament maker role to user by id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The tournament maker data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TournamentMakerRequest'
+      responses:
+        '201':
+          description: "Role was added"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+        
+    delete:
+      tags:
+        - user
+      operationId: removeTournamentMakerRoleByUserId
+      summary: "To delete tournament maker role by id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "User id"
+      responses:
+        '204':
+          description: "Removable was successful"
+        '500':
+          description: "Internal Server Error"
+
+
+  /api/v1/users/legal_tournament_maker:
+    get:
+      tags:
+        - user
+      operationId: getLegalTournamentMakers
+      summary: "Show all the existed legal tournament makers"
+      description: "To get list of every legal tournament maker from database"
+      responses:
+        '200':
+          description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LegalTournamentMakerResponse'
+        '400':
+          description: "Bad request"  
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+  
+  /api/v1/users/{id}/legal_tournament_maker:
+    post:
+      tags:
+        - user
+      operationId: addLegalTournamentMakerRoleByUserId
+      summary: "To add legal tournament maker role to user by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The legal tournament maker dataa"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegalTournamentMakerRequest'
+      responses:
+        '201':
+          description: "The role was added"
+        '400':
+          description: "Bad request" 
+        '500':
+          description: "Internal Server Error"
+          
+    delete:
+      tags:
+        - user
+      operationId: removeLegalTournamentMakerRoleByUserId
+      summary: "To delete legal tournament maker role by id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "User id"
+      responses:
+        '204':
+          description: "Removable was successful"
+        '500':
+          description: "Internal Server Error"
+
+
+  /api/v1/users/judge:
+    get:
+      tags:
+        - user
+      operationId: getJudges
+      summary: "Show all the existed judges"
+      description: "To get list of every judge from database"
+      responses:
+        '200':
+          description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JudgeResponse'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+          
+  /api/v1/users/{id}/judge:
+    post:
+      tags:
+        - user
+      operationId: addJudgeRoleByUserId
+      summary: "To add judge role"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The judge role"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JudgeRequest'
+      responses:
+        '201':
+          description: "The judge role was added"
+        '400':
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
+          
+    delete:
+      tags:
+        - user
+      operationId: removeJudgeRoleByUserId
+      summary: "To delete judge role by id"
+      parameters:
+       - in: path
+         name: id
+         required: true
+         schema:
+           type: integer
+         description: "User id"
+      responses:
+       '204':
+         description: "Removable was successful"
+    
+  /api/v1/users/organizer:
+    get:
+      tags:
+        - user
+      operationId: getOrganizers
+      summary: "Show all the existed organizers"
+      description: "To get list of every organizer from database"
+      responses:
+        '200':
+          description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OrganizerResponse"
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+          
+  /api/v1/users/{id}/organizer:
+    post:
+      tags:
+        - user
+      operationId: addOrganizerRoleByUserId
+      summary: "To add organizer role"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The organizer data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizerRequest'
+      responses:
+        '201':
+          description: "The role was added"
+        '400':
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
+          
+    delete:
+      tags:
+        - user
+      operationId: removeOrganizerRoleByUserId
+      summary: "To delete organizer role by id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "User id"
+      responses:
+        '204':
+          description: "Removable was successful"
+        '500':
+          description: "Internal Server Error"
+
+components:
+  schemas:
+    TournamentMakerRequest:
+      type: object
+      required:
+        - organization_id
+      properties:
+        organization_id:
+          type: integer
+
+    JudgeResponse:
+      type: object
+      required:
+        - status_id
+      properties:
+        status_id:
+          type: integer
+          description: "ID статуса судьи"
+          
+    LegalTournamentMakerResponse:
+      type: object
+      required:
+        - organization_id
+      properties:
+        organization_id:
+          type: integer
+          description: "ID организации, связанной с пользователем"
+          
+    OrganizerResponse:
+      type: object
+      required:
+        - email
+        - status
+      properties:
+        email:
+          type: string
+          format: email
+          description: "Электронная почта организатора"
+        status:
+          type: string
+          description: "Статус организатора"
+        inn:
+          type: string
+          description: "ИНН организатора"
+
+    TournamentMakerResponse:
+      type: object
+      required:
+        - organization_id
+      properties:
+        organization_id:
+          type: integer
+    UserRequest:
+      type: object
+      required:
+        - login
+        - email
+        - phone_number
+        - password
+      properties:
+        login:
+          type: string
+        email:
+          type: string
+          format: email
+        phone_number:
+          type: string
+        photo_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        patronymic:
+          type: string
+        password:
+          type: string
+          
+    UserResponse:
+      type: object
+      required:
+        - login
+        - email
+        - phone_number
+        - password
+      properties:
+        login:
+          type: string
+        email:
+          type: string
+          format: email
+        phone_number:
+          type: string
+        photo_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        patronymic:
+          type: string
+        password:
+          type: string
+          
+    JudgeRequest:
+      type: object
+      required:
+        - status_id
+      properties:
+        status_id:
+          type: integer
+          description: "ID статуса судьи"
+          
+    LegalTournamentMakerRequest:
+      type: object
+      required:
+        - organization_id
+      properties:
+        organization_id:
+          type: integer
+          description: "ID организации, связанной с пользователем"
+          
+    OrganizerRequest:
+      type: object
+      required:
+        - email
+        - status
+      properties:
+        email:
+          type: string
+          format: email
+          description: "Электронная почта организатора"
+        status:
+          type: string
+          description: "Статус организатора"
+        inn:
+          type: string
+          description: "ИНН организатора"

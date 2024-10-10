@@ -1,0 +1,426 @@
+openapi: 3.0.2
+info:
+  title: "tournament-storage"
+  description: "It's easy to manage your sport tournament or league"
+  version: "1.0"
+  contact:
+    name: "SportManager"
+    url: "https://sportmanager.com/support"
+    email: "sportmanager@gmail.com"
+tags:
+  - name: season
+    description: "Everything about seasons"
+
+paths:
+  /api/v1/season:
+    get:
+      tags:
+        - season
+      summary: "Получить все сезоны"
+      responses:
+        '200':
+          description: "Список сезонов"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SeasonResponse'
+        '400':
+          description: "Ошибка запроса"
+
+    post:
+      tags:
+        - season
+      summary: "Создать новый сезон"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonRequest'
+      responses:
+        '201':
+          description: "Сезон успешно создан"
+        '400':
+          description: "Ошибка при создании сезона"
+
+  /api/v1/season/{seasonId}:
+    put:
+      tags:
+        - season
+      summary: "Обновить данные сезона по ID"
+      parameters:
+        - in: path
+          name: seasonId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonRequest'
+      responses:
+        '200':
+          description: "Сезон успешно обновлен"
+        '404':
+          description: "Сезон не найден"
+        '400':
+          description: "Ошибка запроса"
+
+    delete:
+      tags:
+        - season
+      summary: "Удалить сезон по ID"
+      parameters:
+        - in: path
+          name: seasonId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Сезон успешно удален"
+        '404':
+          description: "Сезон не найден"
+
+  /api/v1/season_tournament:
+    get:
+      tags:
+        - season
+      summary: "Получить все турниры сезонов"
+      responses:
+        '200':
+          description: "Список турниров сезонов"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SeasonTournamentResponse'
+        '400':
+          description: "Ошибка запроса"
+
+    post:
+      tags:
+        - season
+      summary: "Создать новый турнир сезона"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonTournamentRequest'
+      responses:
+        '201':
+          description: "Турнир сезона успешно создан"
+        '400':
+          description: "Ошибка при создании турнира сезона"
+
+  /api/v1/season_tournament/{seasonTournamentId}:
+    put:
+      tags:
+        - season
+      summary: "Обновить данные турнира сезона по ID"
+      parameters:
+        - in: path
+          name: seasonTournamentId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonTournamentRequest'
+      responses:
+        '200':
+          description: "Турнир сезона успешно обновлен"
+        '404':
+          description: "Турнир сезона не найден"
+        '400':
+          description: "Ошибка запроса"
+
+    delete:
+      tags:
+        - season
+      summary: "Удалить турнир сезона по ID"
+      parameters:
+        - in: path
+          name: seasonTournamentId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Турнир сезона успешно удален"
+        '404':
+          description: "Турнир сезона не найден"
+
+  /api/v1/season_tournament_club:
+    get:
+      tags:
+        - season
+      summary: "Получить все клубы турниров сезона"
+      responses:
+        '200':
+          description: "Список клубов турниров сезона"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SeasonTournamentClubResponse'
+        '400':
+          description: "Ошибка запроса"
+
+
+  /api/v1/season_tournament_club/{club_id}:
+    post:
+      tags:
+        - season
+      summary: "Создать новый клуб турнира сезона из существующего клуба"
+      parameters:
+        - in: path
+          name: club_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: "Клуб турнира сезона успешно создан"
+        '400':
+          description: "Ошибка при создании клуба турнира сезона"
+
+
+  /api/v1/season_tournament_club/{seasonTournamentClubId}:
+    put:
+      tags:
+        - season
+      summary: "Обновить данные клуба турнира сезона по ID"
+      parameters:
+        - in: path
+          name: seasonTournamentClubId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SeasonTournamentClubRequest'
+      responses:
+        '200':
+          description: "Клуб турнира сезона успешно обновлен"
+        '404':
+          description: "Клуб турнира сезона не найден"
+        '400':
+          description: "Ошибка запроса"
+
+    delete:
+      tags:
+        - season
+      summary: "Удалить клуб турнира сезона по ID"
+      parameters:
+        - in: path
+          name: seasonTournamentClubId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Клуб турнира сезона успешно удален"
+        '404':
+          description: "Клуб турнира сезона не найден"
+
+  /api/v1/club:
+    get:
+      tags:
+        - season
+      summary: "Получить все клубы"
+      responses:
+        '200':
+          description: "Список клубов"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClubResponse'
+        '400':
+          description: "Ошибка запроса"
+
+    post:
+      tags:
+        - season
+      summary: "Создать новый клуб"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClubRequest'
+      responses:
+        '201':
+          description: "Клуб успешно создан"
+        '400':
+          description: "Ошибка при создании клуба"
+
+  /api/v1/club/{clubId}:
+    put:
+      tags:
+        - season
+      summary: "Обновить данные клуба по ID"
+      parameters:
+        - in: path
+          name: clubId
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClubRequest'
+      responses:
+        '200':
+          description: "Клуб успешно обновлен"
+        '404':
+          description: "Клуб не найден"
+        '400':
+          description: "Ошибка запроса"
+
+    delete:
+      tags:
+        - season
+      summary: "Удалить клуб по ID"
+      parameters:
+        - in: path
+          name: clubId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Клуб успешно удален"
+        '404':
+          description: "Клуб не найден"
+
+components:
+  schemas:
+    SeasonRequest:
+      type: object
+      required:
+        - name
+        - sport_id
+        - starts_at
+        - ends_at
+      properties:
+        name:
+          type: string
+          description: "Название сезона"
+        sport_id:
+          type: integer
+          description: "ID вида спорта"
+        starts_at:
+          type: string
+          format: date-time
+          description: "Дата и время начала сезона"
+        ends_at:
+          type: string
+          format: date-time
+          description: "Дата и время окончания сезона"
+
+    SeasonResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "Название сезона"
+        sport_id:
+          type: integer
+          description: "ID вида спорта"
+        starts_at:
+          type: string
+          format: date-time
+          description: "Дата и время начала сезона"
+        ends_at:
+          type: string
+          format: date-time
+          description: "Дата и время окончания сезона"
+
+    SeasonTournamentRequest:
+      type: object
+      required:
+        - season_id
+        - tournament_id
+      properties:
+        season_id:
+          type: integer
+          description: "ID сезона"
+        tournament_id:
+          type: integer
+          description: "ID турнира"
+
+    SeasonTournamentResponse:
+      type: object
+      properties:
+        season_id:
+          type: integer
+          description: "ID сезона"
+        tournament_id:
+          type: integer
+          description: "ID турнира"
+
+    SeasonTournamentClubRequest:
+      type: object
+      required:
+        - season_tournament_id
+        - tournament_part_id
+        - club_id
+      properties:
+        season_tournament_id:
+          type: integer
+          description: "ID турнира сезона"
+        tournament_part_id:
+          type: integer
+          description: "ID участия в турнире"
+        club_id:
+          type: integer
+
+    SeasonTournamentClubResponse:
+      type: object
+      required:
+        - season_tournament_id
+        - tournament_part_id
+        - club_id
+      properties:
+        season_tournament_id:
+          type: integer
+          description: "ID турнира сезона"
+        tournament_part_id:
+          type: integer
+          description: "ID участия в турнире"
+        club_id:
+          type: integer
+
+    ClubRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: "Название клуба"
+
+    ClubResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          description: "Название клуба"

@@ -1,8 +1,0 @@
-type: object
-properties:
-  tournament_part_id:
-    type: integer
-  judge_id:
-    type: integer
-  judge_status_id:
-    type: integer
