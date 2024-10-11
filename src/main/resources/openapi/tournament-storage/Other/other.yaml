@@ -1,0 +1,171 @@
+openapi: 3.0.2
+info:
+  title: "tournament-storage"
+  description: "It's easy to manage your sport tournament or league"
+  version: "1.0"
+  contact:
+    name: "SportManager"
+    url: "https://sportmanager.com/support"
+    email: "sportmanager@gmail.com"
+tags:
+  - name: passport
+    description: "Means that endpoint works with passport"
+
+paths:
+  /api/v1/passport:
+    get:
+      tags:
+        - passport
+      summary: "Получить все паспорта"
+      responses:
+        '200':
+          description: "Успешно получены записи паспортов"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PassportResponse'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
+
+    post:
+      tags:
+        - passport
+      summary: "Создать новый паспорт"
+      requestBody:
+        description: "Данные для создания нового паспорта"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PassportRequest'
+      responses:
+        '201':
+          description: "Operation was successful"
+        '400':
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
+
+  /api/v1/passport/{id}:
+    get:
+      tags:
+        - passport
+      summary: "Получить паспорт по ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            description: "ID паспорта"
+      responses:
+        '200':
+          description: "Паспорт успешно получен"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PassportResponse'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
+
+    put:
+      tags:
+        - passport
+      summary: "Обновить паспорт по ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            description: "ID паспорта"
+      requestBody:
+        description: "Данные для обновления паспорта"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PassportRequest'
+      responses:
+        '201':
+          description: "Operation was successful"
+        '400':
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
+
+    delete:
+      tags:
+        - passport
+      summary: "Удалить паспорт по ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            description: "ID паспорта"
+      responses:
+        '204':
+          description: "Operation was successful"
+        '400':
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
+
+
+components:
+  schemas:
+    PassportRequest:
+      type: object
+      required:
+        - users_id
+        - series
+        - number
+        - registration
+      properties:
+        users_id:
+          type: integer
+          description: "ID пользователя"
+        series:
+          type: string
+          description: "Серия паспорта"
+        number:
+          type: string
+          description: "Номер паспорта"
+        registration:
+          type: string
+          description: "Место регистрации"
+
+    PassportResponse:
+      type: object
+      required:
+        - users_id
+        - series
+        - number
+        - registration
+      properties:
+        users_id:
+          type: integer
+          description: "ID пользователя"
+        series:
+          type: string
+          description: "Серия паспорта"
+        number:
+          type: string
+          description: "Номер паспорта"
+        registration:
+          type: string
+          description: "Место регистрации"

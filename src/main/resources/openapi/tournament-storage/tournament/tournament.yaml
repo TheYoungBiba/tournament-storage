@@ -232,7 +232,12 @@ paths:
                 items:
                   $ref: '#/components/schemas/TournamentMakerTournamentResponse'
         '400':
-          description: "Ошибка в запросе"
+          description: "Bad request"
+        '404':
+          description: "Not found"
+        '500':
+          description: "Internal Server Error"
+
 
     post:
       tags:
@@ -247,13 +252,11 @@ paths:
               $ref: '#/components/schemas/TournamentMakerTournamentRequest'
       responses:
         '201':
-          description: "Запись успешно создана"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TournamentMakerTournamentResponse'
+          description: "Operation was successful"
         '400':
-          description: "Ошибка в запросе"
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
 
   /api/v1/tournament_maker_tournament/{id}:
     get:
@@ -274,8 +277,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TournamentMakerTournamentResponse'
+        '201':
+          description: "Operation was successful"
         '400':
-          description: "Ошибка в запросе"
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
 
     put:
       tags:
@@ -296,14 +303,12 @@ paths:
             schema:
               $ref: '#/components/schemas/TournamentMakerTournamentRequest'
       responses:
-        '200':
-          description: "Запись успешно обновлена"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TournamentMakerTournamentResponse'
+        '201':
+          description: "Operation was successful"
         '400':
-          description: "Ошибка в запросе"
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
 
     delete:
       tags:
@@ -317,10 +322,12 @@ paths:
             type: integer
             description: "ID записи"
       responses:
-        '200':
-          description: "Запись успешно удалена"
+        '204':
+          description: "Judge removed from the tournament part"
         '400':
-          description: "Ошибка в запросе"
+          description: "Bad request"
+        '500':
+          description: "Internal Server Error"
 
 components:
   schemas:
