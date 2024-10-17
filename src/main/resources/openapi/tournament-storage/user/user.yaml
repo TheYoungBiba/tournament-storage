@@ -8,39 +8,33 @@ info:
     url: "https://sportmanager.com/support"
     email: "sportmanager@gmail.com"
 tags:
-  - name: tournament
-    description: "Everything about tournaments"
   - name: user
     description: "Everything about users"
-  - name: sportsmen
-    description:
-  - name: other
-    description:
-  - name: season
-    description:
-  - name: organization
-    description:
 
 paths:
   /api/v1/users:
-    post:
-      tags:
-        - user
-      operationId: createUser
-      summary: "Create new user"
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserRequest'
-      responses:
-        '201':
-          description: "User was created"
-        '400':
-          description: "Bad request"
-        '500':
-          description: "Internal Server Error"
+    # post:
+    #   tags:
+    #     - user
+    #   operationId: createUser
+    #   summary: "Create new user"
+    #   requestBody:
+    #     required: true
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: '#/components/schemas/UserRequest'
+    #   responses:
+    #     '201':
+    #       description: "User was created"
+    #       content:
+    #         application/json:
+    #           schema:
+    #             $ref: '#/components/schemas/'
+    #     '400':
+    #       description: "Bad request"
+    #     '500':
+    #       description: "Internal Server Error"
 
     get:
       tags:
@@ -56,13 +50,47 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UserResponse'
+                  $ref: '#/components/schemas/UserInfoResponse'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
           description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/users/{id}:
     get:
@@ -79,10 +107,55 @@ paths:
       responses:
         '200':
           description: "Данные пользователя"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_info:
+                    $ref: '#/components/schemas/UserInfo'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
           description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
     put:
       tags:
@@ -101,14 +174,59 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UserRequest'
+              $ref: '#/components/schemas/UserInfo'
       responses:
         '201':
           description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_info:
+                    $ref: '#/components/schemas/UserInfo'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
-          description: "Internal Server Error"          
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto' 
 
     delete:
       tags:
@@ -125,10 +243,55 @@ paths:
       responses:
         '204':
           description: "Removable was successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  user_info:
+                    $ref: '#/components/schemas/UserInfo'
         '400':
-          description: "Bad request" 
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/users/tournament_maker:
     get:
@@ -148,11 +311,105 @@ paths:
                   $ref: '#/components/schemas/TournamentMakerResponse'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
           description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
-  
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
+
+    post:
+      tags:
+        - user
+      operationId: makeTournamentMaker
+      summary: "To make tournament maker"
+      requestBody:
+        description: "The user data with role info"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TournamentMakerRequest'
+      responses:
+        '201':
+          description: "Role was made"
+          content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/TournamentMakerResponse' 
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
+
   /api/v1/users/{id}/tournament_maker:
     post:
       tags:
@@ -171,14 +428,59 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TournamentMakerRequest'
+              $ref: '#/components/schemas/TournamentMakerInfo'
       responses:
         '201':
-          description: "Role was added"
+          description: "Role was made"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  tournament_maker_info:
+                    $ref: '#/components/schemas/TournamentMakerInfo'
         '400':
-          description: "Bad request" 
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
         
     delete:
       tags:
@@ -195,9 +497,55 @@ paths:
       responses:
         '204':
           description: "Removable was successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  tournament_maker_info:
+                    $ref: '#/components/schemas/TournamentMakerInfo'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
-
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/users/legal_tournament_maker:
     get:
@@ -216,12 +564,106 @@ paths:
                 items:
                   $ref: '#/components/schemas/LegalTournamentMakerResponse'
         '400':
-          description: "Bad request"  
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
           description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
   
+    post:
+      tags:
+        - user
+      operationId: makeLegalTournamentMaker
+      summary: "To make legal tournament maker"
+      requestBody:
+        description: "The user data with role info"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LegalTournamentMakerRequest'
+      responses:
+        '201':
+          description: "Role was made"
+          content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/LegalTournamentMakerResponse' 
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
+
   /api/v1/users/{id}/legal_tournament_maker:
     post:
       tags:
@@ -240,14 +682,59 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LegalTournamentMakerRequest'
+              $ref: '#/components/schemas/LegalTournamentMakerInfo' 
       responses:
         '201':
-          description: "The role was added"
+          description: "The role was made"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    legal_tournament_maker_info:
+                      $ref: '#/components/schemas/LegalTournamentMakerInfo'
         '400':
-          description: "Bad request" 
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
           
     delete:
       tags:
@@ -264,8 +751,55 @@ paths:
       responses:
         '204':
           description: "Removable was successful"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    legal_tournament_maker_info:
+                      $ref: '#/components/schemas/LegalTournamentMakerInfo'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
 
   /api/v1/users/judge:
@@ -286,11 +820,105 @@ paths:
                   $ref: '#/components/schemas/JudgeResponse'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
           description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
-          
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
+
+    post:
+      tags:
+        - user
+      operationId: makeJudge
+      summary: "To make judge"
+      requestBody:
+        description: "The user data with role info"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JudgeRequest'
+      responses:
+        '201':
+          description: "Role was made"
+          content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/JudgeResponse' 
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
+
   /api/v1/users/{id}/judge:
     post:
       tags:
@@ -309,14 +937,59 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/JudgeRequest'
+              $ref: '#/components/schemas/JudgeInfo' 
       responses:
         '201':
-          description: "The judge role was added"
+          description: "The judge role was made"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    judge_info:
+                      $ref: '#/components/schemas/JudgeInfo'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
           
     delete:
       tags:
@@ -331,9 +1004,58 @@ paths:
            type: integer
          description: "User id"
       responses:
-       '204':
-         description: "Removable was successful"
-    
+        '204':
+          description: "Removable was successful"
+          content:
+            application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    judge_info:
+                      $ref: '#/components/schemas/JudgeInfo'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
+
   /api/v1/users/organizer:
     get:
       tags:
@@ -352,11 +1074,105 @@ paths:
                   $ref: "#/components/schemas/OrganizerResponse"
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
           description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
           
+    post:
+      tags:
+        - user
+      operationId: makeOrganizer
+      summary: "To make organizer"
+      requestBody:
+        description: "The user data with role info"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizerRequest'
+      responses:
+        '201':
+          description: "Role was made"
+          content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/OrganizerResponse' 
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
+
   /api/v1/users/{id}/organizer:
     post:
       tags:
@@ -375,14 +1191,59 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/OrganizerRequest'
+              $ref: '#/components/schemas/OrganizerInfo'
       responses:
         '201':
-          description: "The role was added"
+          description: "The role was made"
+          content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    organizer_info:
+                      $ref: '#/components/schemas/OrganizerInfo'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
           
     delete:
       tags:
@@ -399,114 +1260,173 @@ paths:
       responses:
         '204':
           description: "Removable was successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  organizer_info:
+                    $ref: '#/components/schemas/OrganizerInfo'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
 components:
   schemas:
-    TournamentMakerRequest:
+    UserInfo:
       type: object
       required:
-        - organization_id
-      properties:
-        organization_id:
-          type: integer
-
-    JudgeResponse:
-      type: object
-      required:
-        - status_id
-      properties:
-        status_id:
-          type: integer
-          description: "ID статуса судьи"
-          
-    LegalTournamentMakerResponse:
-      type: object
-      required:
-        - organization_id
-      properties:
-        organization_id:
-          type: integer
-          description: "ID организации, связанной с пользователем"
-          
-    OrganizerResponse:
-      type: object
-      required:
+        - login
         - email
-        - status
+        - phone_number
+        - password
       properties:
+        login:
+          type: string
         email:
           type: string
           format: email
-          description: "Электронная почта организатора"
-        status:
+        phone_number:
           type: string
-          description: "Статус организатора"
-        inn:
+        photo_id:
           type: string
-          description: "ИНН организатора"
+        first_name:
+          type: string
+        last_name:
+          type: string
+        patronymic:
+          type: string
+        password:
+          type: string
+
+    #Нужен для вывода всех юзеров, в остальных эндпоинтах можно заменить на связку UserInfo + Id
+    UserInfoResponse:
+      type: object
+      required:
+        - id
+        - login
+        - email
+        - phone_number
+        - password
+      properties:
+        id:
+          type: integer
+        login:
+          type: string
+        email:
+          type: string
+          format: email
+        phone_number:
+          type: string
+        photo_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        patronymic:
+          type: string
+        password:
+          type: string
+
+    TournamentMakerRequest:
+      type: object
+      required:
+        - user_info
+        - tournament_maker_info
+      properties:
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/TournamentMakerInfo'
 
     TournamentMakerResponse:
       type: object
       required:
+        - id
+        - user_info
+        - tournament_maker_info
+      properties:
+        id:
+          type: integer
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/TournamentMakerInfo'
+
+    TournamentMakerInfo:
+      type: object
+      required:
         - organization_id
       properties:
         organization_id:
           type: integer
-    UserRequest:
-      type: object
-      required:
-        - login
-        - email
-        - phone_number
-        - password
-      properties:
-        login:
-          type: string
-        email:
-          type: string
-          format: email
-        phone_number:
-          type: string
-        photo_id:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        patronymic:
-          type: string
-        password:
-          type: string
-          
-    UserResponse:
-      type: object
-      required:
-        - login
-        - email
-        - phone_number
-        - password
-      properties:
-        login:
-          type: string
-        email:
-          type: string
-          format: email
-        phone_number:
-          type: string
-        photo_id:
-          type: string
-        first_name:
-          type: string
-        last_name:
-          type: string
-        patronymic:
-          type: string
-        password:
-          type: string
-          
+
     JudgeRequest:
+      type: object
+      required:
+        - user_info
+        - judge_info
+      properties:
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/JudgeInfo'
+
+    JudgeResponse:
+      type: object
+      required:
+        - id
+        - user_info
+        - judge_info
+      properties:
+        id:
+          type: integer
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/JudgeInfo'
+
+    JudgeInfo:
       type: object
       required:
         - status_id
@@ -518,13 +1438,63 @@ components:
     LegalTournamentMakerRequest:
       type: object
       required:
+        - user_info
+        - legal_tournament_maker_info
+      properties:
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/LegalTournamentMakerInfo'
+  
+    LegalTournamentMakerResponse:
+      type: object
+      required:
+        - id
+        - user_info
+        - legal_tournament_maker_info
+      properties:
+        id:
+          type: integer
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/LegalTournamentMakerInfo'
+  
+    LegalTournamentMakerInfo:
+      type: object
+      required:
         - organization_id
       properties:
         organization_id:
           type: integer
           description: "ID организации, связанной с пользователем"
-          
+        
     OrganizerRequest:
+      type: object
+      required:
+        - user_info
+        - organizer_info
+      properties:
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/OrganizerInfo'
+
+    OrganizerResponse:
+      type: object
+      required:
+        - id
+        - user_info
+        - organizer_info
+      properties:
+        id:
+          type: integer
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/OrganizerInfo'
+
+    OrganizerInfo:
       type: object
       required:
         - email
@@ -540,3 +1510,43 @@ components:
         inn:
           type: string
           description: "ИНН организатора"
+
+    BadRequest400Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    Unauthorized401Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    Forbidden403Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    NotFound404Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    InternalError500Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer

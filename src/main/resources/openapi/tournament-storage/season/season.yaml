@@ -16,6 +16,7 @@ paths:
     get:
       tags:
         - season
+      operationId: getSeasons
       summary: "Получить все сезоны"
       responses:
         '200':
@@ -27,11 +28,50 @@ paths:
                 items:
                   $ref: '#/components/schemas/SeasonResponse'
         '400':
-          description: "Ошибка запроса"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
     post:
       tags:
         - season
+      operationId: makeSeason
       summary: "Создать новый сезон"
       requestBody:
         required: true
@@ -42,13 +82,56 @@ paths:
       responses:
         '201':
           description: "Сезон успешно создан"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonResponse'
         '400':
-          description: "Ошибка при создании сезона"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/season/{seasonId}:
     put:
       tags:
         - season
+      operationId: updateSeasonById
       summary: "Обновить данные сезона по ID"
       parameters:
         - in: path
@@ -65,14 +148,55 @@ paths:
       responses:
         '200':
           description: "Сезон успешно обновлен"
-        '404':
-          description: "Сезон не найден"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonResponse'
         '400':
-          description: "Ошибка запроса"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
     delete:
       tags:
         - season
+      operationId: removeSeasonById
       summary: "Удалить сезон по ID"
       parameters:
         - in: path
@@ -83,13 +207,55 @@ paths:
       responses:
         '200':
           description: "Сезон успешно удален"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
-          description: "Сезон не найден"
-
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
   /api/v1/season_tournament:
     get:
       tags:
         - season
+      operationId: getSeasonTournaments
       summary: "Получить все турниры сезонов"
       responses:
         '200':
@@ -101,11 +267,50 @@ paths:
                 items:
                   $ref: '#/components/schemas/SeasonTournamentResponse'
         '400':
-          description: "Ошибка запроса"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
     post:
       tags:
         - season
+      operationId: makeSeasonTournament
       summary: "Создать новый турнир сезона"
       requestBody:
         required: true
@@ -116,13 +321,56 @@ paths:
       responses:
         '201':
           description: "Турнир сезона успешно создан"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonTournamentResponse'
         '400':
-          description: "Ошибка при создании турнира сезона"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/season_tournament/{seasonTournamentId}:
     put:
       tags:
         - season
+      operationId: updateSeasonTournament
       summary: "Обновить данные турнира сезона по ID"
       parameters:
         - in: path
@@ -139,14 +387,55 @@ paths:
       responses:
         '200':
           description: "Турнир сезона успешно обновлен"
-        '404':
-          description: "Турнир сезона не найден"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonTournamentResponse'
         '400':
-          description: "Ошибка запроса"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
     delete:
       tags:
         - season
+      operationId: removeSeasonTournament
       summary: "Удалить турнир сезона по ID"
       parameters:
         - in: path
@@ -157,13 +446,56 @@ paths:
       responses:
         '200':
           description: "Турнир сезона успешно удален"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonTournamentResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
-          description: "Турнир сезона не найден"
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/season_tournament_club:
     get:
       tags:
         - season
+      operationId: getSeasonTournamentClubs
       summary: "Получить все клубы турниров сезона"
       responses:
         '200':
@@ -175,13 +507,52 @@ paths:
                 items:
                   $ref: '#/components/schemas/SeasonTournamentClubResponse'
         '400':
-          description: "Ошибка запроса"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
 
   /api/v1/season_tournament_club/{club_id}:
     post:
       tags:
         - season
+      operationId: makeSeasonTournamentClubByClubId
       summary: "Создать новый клуб турнира сезона из существующего клуба"
       parameters:
         - in: path
@@ -192,14 +563,56 @@ paths:
       responses:
         '201':
           description: "Клуб турнира сезона успешно создан"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonTournamentClubResponse'
         '400':
-          description: "Ошибка при создании клуба турнира сезона"
-
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/season_tournament_club/{seasonTournamentClubId}:
     put:
       tags:
         - season
+      operationId: updateSeasonTournamentClubByClubId
       summary: "Обновить данные клуба турнира сезона по ID"
       parameters:
         - in: path
@@ -216,14 +629,55 @@ paths:
       responses:
         '200':
           description: "Клуб турнира сезона успешно обновлен"
-        '404':
-          description: "Клуб турнира сезона не найден"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonTournamentClubResponse'
         '400':
-          description: "Ошибка запроса"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
     delete:
       tags:
         - season
+      operationId: removeSeasonTournamentClubByClubId
       summary: "Удалить клуб турнира сезона по ID"
       parameters:
         - in: path
@@ -234,13 +688,56 @@ paths:
       responses:
         '200':
           description: "Клуб турнира сезона успешно удален"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SeasonTournamentClubResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
-          description: "Клуб турнира сезона не найден"
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/club:
     get:
       tags:
         - season
+      operationId: getClubs
       summary: "Получить все клубы"
       responses:
         '200':
@@ -252,11 +749,50 @@ paths:
                 items:
                   $ref: '#/components/schemas/ClubResponse'
         '400':
-          description: "Ошибка запроса"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
     post:
       tags:
         - season
+      operationId: makeClub
       summary: "Создать новый клуб"
       requestBody:
         required: true
@@ -267,13 +803,56 @@ paths:
       responses:
         '201':
           description: "Клуб успешно создан"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClubResponse'
         '400':
-          description: "Ошибка при создании клуба"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/club/{clubId}:
     put:
       tags:
         - season
+      operationId: updateClubById
       summary: "Обновить данные клуба по ID"
       parameters:
         - in: path
@@ -290,14 +869,55 @@ paths:
       responses:
         '200':
           description: "Клуб успешно обновлен"
-        '404':
-          description: "Клуб не найден"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClubResponse'
         '400':
-          description: "Ошибка запроса"
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
     delete:
       tags:
         - season
+      operationId: removeClub
       summary: "Удалить клуб по ID"
       parameters:
         - in: path
@@ -308,8 +928,50 @@ paths:
       responses:
         '200':
           description: "Клуб успешно удален"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClubResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
-          description: "Клуб не найден"
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
 components:
   schemas:
@@ -338,7 +1000,11 @@ components:
 
     SeasonResponse:
       type: object
+      required:
+        - id
       properties:
+        id:
+          type: integer
         name:
           type: string
           description: "Название сезона"
@@ -369,7 +1035,11 @@ components:
 
     SeasonTournamentResponse:
       type: object
+      required:
+        - id
       properties:
+        id:
+          type: integer
         season_id:
           type: integer
           description: "ID сезона"
@@ -396,10 +1066,13 @@ components:
     SeasonTournamentClubResponse:
       type: object
       required:
+        - id
         - season_tournament_id
         - tournament_part_id
         - club_id
       properties:
+        id:
+          type: integer
         season_tournament_id:
           type: integer
           description: "ID турнира сезона"
@@ -420,7 +1093,51 @@ components:
 
     ClubResponse:
       type: object
+      required:
+        - id
       properties:
+        id:
+          type: integer
         name:
           type: string
           description: "Название клуба"
+
+    BadRequest400Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    Unauthorized401Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    Forbidden403Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    NotFound404Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    InternalError500Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer

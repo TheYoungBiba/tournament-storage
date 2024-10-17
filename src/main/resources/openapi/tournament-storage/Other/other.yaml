@@ -16,6 +16,7 @@ paths:
     get:
       tags:
         - passport
+      operationId: getPassports
       summary: "Получить все паспорта"
       responses:
         '200':
@@ -28,15 +29,50 @@ paths:
                   $ref: '#/components/schemas/PassportResponse'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
           description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
 
     post:
       tags:
         - passport
+      operationId: makePassport
       summary: "Создать новый паспорт"
       requestBody:
         description: "Данные для создания нового паспорта"
@@ -48,15 +84,56 @@ paths:
       responses:
         '201':
           description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PassportResponse'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
   /api/v1/passport/{id}:
     get:
       tags:
         - passport
+      operationId: getPassportById
       summary: "Получить паспорт по ID"
       parameters:
         - in: path
@@ -74,15 +151,50 @@ paths:
                 $ref: '#/components/schemas/PassportResponse'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
         '404':
           description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
 
     put:
       tags:
         - passport
+      operationId: updatePassportById
       summary: "Обновить паспорт по ID"
       parameters:
         - in: path
@@ -101,14 +213,55 @@ paths:
       responses:
         '201':
           description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PassportResponse'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
     delete:
       tags:
         - passport
+      operationId: removePassportById
       summary: "Удалить паспорт по ID"
       parameters:
         - in: path
@@ -120,10 +273,50 @@ paths:
       responses:
         '204':
           description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PassportResponse'
         '400':
           description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequest400Dto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Unauthorized401Dto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Forbidden403Dto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFound404Dto'
         '500':
           description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalError500Dto'
 
 
 components:
@@ -169,3 +362,43 @@ components:
         registration:
           type: string
           description: "Место регистрации"
+
+    BadRequest400Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    Unauthorized401Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    Forbidden403Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    NotFound404Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    InternalError500Dto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
