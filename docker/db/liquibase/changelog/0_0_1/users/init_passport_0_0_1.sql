@@ -1,8 +1,7 @@
 create table passport
 (
     id           serial primary key,
-    users_id     int references users (id),
-    series       varchar(4),
-    number       varchar(6),
+    series       varchar(4) not null,
+    number       varchar(6) not null,
     registration varchar(256)
 );

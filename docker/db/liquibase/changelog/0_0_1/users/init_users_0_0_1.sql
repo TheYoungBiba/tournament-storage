@@ -8,5 +8,6 @@ create table users
     first_name   varchar(64),
     last_name    varchar(64),
     patronymic   varchar(64),
+    passport_id  int references passport (id),
     password     varchar(256) not null
 );

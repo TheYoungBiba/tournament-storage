@@ -13,14 +13,14 @@ databaseChangeLog:
         - sqlFile:
             dbms: postgresql
             encoding: utf8
-            path: changelog/0_0_1/users/init_users_0_0_1.sql
+            path: changelog/0_0_1/users/init_passport_0_0_1.sql
             relativeToChangelogFile: false
             splitStatements: true
             stripComments: true
         - sqlFile:
             dbms: postgresql
             encoding: utf8
-            path: changelog/0_0_1/users/init_passport_0_0_1.sql
+            path: changelog/0_0_1/users/init_users_0_0_1.sql
             relativeToChangelogFile: false
             splitStatements: true
             stripComments: true
