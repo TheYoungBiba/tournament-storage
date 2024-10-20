@@ -7,6 +7,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.6"
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
     id("org.openapi.generator") version "7.8.0"
+    id("io.swagger.core.v3") version "2.2.23"
 }
 
 group = "SakiraBusinessLabs"
@@ -23,30 +24,27 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("jakarta.validation:jakarta.validation-api:3.1.0")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // Spring
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework:spring-webflux")
 
     // Database
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.postgresql:postgresql")
 
+    // OpenApi
+    implementation("io.swagger.core.v3:swagger-models")
+    implementation("io.swagger.core.v3:swagger-annotations")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
+
     // Test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
-    // https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api
-    implementation("jakarta.validation:jakarta.validation-api:3.1.0")
-
-    // https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-models
-    implementation("io.swagger.core.v3:swagger-models:2.2.23")
-    // https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations
-    implementation("io.swagger.core.v3:swagger-annotations:2.2.23")
-
-    // https://mvnrepository.com/artifact/org.springframework/spring-webflux
-    implementation("org.springframework:spring-webflux")
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 }
 
 kotlin {
