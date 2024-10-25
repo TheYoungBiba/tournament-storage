@@ -156,7 +156,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/'
+                  $ref: '#/components/schemas/TournamentResponse'
         '400':
           description: "Bad request"
           content:
