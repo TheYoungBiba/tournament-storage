@@ -7,7 +7,14 @@ plugins {
     id("io.spring.dependency-management") version "1.1.6"
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
     id("org.openapi.generator") version "7.8.0"
-    id("io.swagger.core.v3") version "2.2.23"
+}
+
+detekt {
+    toolVersion = "1.23.7"
+    config.setFrom(file("config/detekt/detekt.yml"))
+    buildUponDefaultConfig = true
+    autoCorrect = true
+    ignoreFailures = false
 }
 
 group = "SakiraBusinessLabs"
@@ -28,6 +35,9 @@ dependencies {
     implementation("jakarta.validation:jakarta.validation-api:3.1.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
+    // Detekt custom rules
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.7")
+
     // Spring
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework:spring-webflux")
@@ -37,8 +47,8 @@ dependencies {
     implementation("org.postgresql:postgresql")
 
     // OpenApi
-    implementation("io.swagger.core.v3:swagger-models")
-    implementation("io.swagger.core.v3:swagger-annotations")
+    implementation("io.swagger.core.v3:swagger-models:2.2.23")
+    implementation("io.swagger.core.v3:swagger-annotations:2.2.23")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 
     // Test
@@ -57,10 +67,12 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-configurations.all {
-    resolutionStrategy.eachDependency {
-        if (requested.group == "org.jetbrains.kotlin") {
-            useVersion(io.gitlab.arturbosch.detekt.getSupportedKotlinVersion())
+dependencyManagement {
+    configurations.matching { it.name == "detekt" }.all {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "org.jetbrains.kotlin") {
+                useVersion(io.gitlab.arturbosch.detekt.getSupportedKotlinVersion())
+            }
         }
     }
 }
