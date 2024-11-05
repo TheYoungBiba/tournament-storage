@@ -5,6 +5,9 @@ spring:
     active: local
   jpa:
     open-in-view: off
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
   main:
     banner-mode: off
 
