@@ -9,5 +9,4 @@ class TournamentStorageApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }

@@ -84,7 +84,11 @@ val outputDirPath = "$buildDir/generated"
 
 // root points of openApiSpec
 val openApiSpecs = listOf(
-    "$rootDir/src/main/resources/openapi/v1/tournament.yaml",
+    "$rootDir/src/main/resources/openapi/tournament-storage/v1/tournament/tournament.yaml",
+    "$rootDir/src/main/resources/openapi/tournament-storage/v1/user/user.yaml",
+    "$rootDir/src/main/resources/openapi/tournament-storage/v1/sportsmen/sportsmen.yaml",
+    "$rootDir/src/main/resources/openapi/tournament-storage/v1/season/season.yaml",
+    "$rootDir/src/main/resources/openapi/tournament-storage/v1/other/other.yaml",
 )
 
 openApiSpecs.forEachIndexed { index, openApiSpec ->
