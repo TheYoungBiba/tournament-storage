@@ -35,7 +35,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -43,7 +43,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -51,7 +51,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -59,7 +59,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -67,9 +67,11 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     post:
+      tags:
+        - tournament
       operationId: createTournament 
       summary: "Make a new tournament"
       requestBody:
@@ -93,7 +95,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -101,7 +103,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -109,7 +111,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -117,7 +119,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -125,7 +127,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
 
 
@@ -164,7 +166,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -172,7 +174,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -180,7 +182,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -188,7 +190,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -196,7 +198,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
               
     delete:
       tags:
@@ -223,7 +225,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -231,7 +233,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -239,7 +241,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -247,7 +249,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -255,7 +257,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
   /api/v1/tournament/tournament-part-judges:
     post:
@@ -283,7 +285,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -291,7 +293,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -299,7 +301,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -307,7 +309,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -315,7 +317,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
   /api/v1/tournament/tournament-part-judges/{tournament_part_id}/{judge_id}:
     put:
@@ -356,7 +358,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -364,7 +366,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -372,7 +374,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -380,7 +382,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -388,7 +390,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     delete:
       tags:
@@ -422,7 +424,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -430,7 +432,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -438,7 +440,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -446,7 +448,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -454,7 +456,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
   /api/v1/tournament/tournament-part-judges/{tournament_part_id}:
     get:
@@ -485,7 +487,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -493,7 +495,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -501,7 +503,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -509,7 +511,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -517,78 +519,139 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
-  /api/v1/tournament_maker_tournament:
+  # /api/v1/tournament_maker_tournament:
+  #   get:
+  #     tags:
+  #       - tournament
+  #     operationId: getTournamentMakerTournaments
+  #     summary: "Получить все записи организаторов турниров"
+  #     responses:
+  #       '200':
+  #         description: "Успешно получены записи"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/TournamentMakerTournamentResponse'
+  #       '400':
+  #         description: "Bad request"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/BadRequestDto'
+  #       '401':
+  #         description: "Unauthorized"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/UnauthorizedDto'
+  #       '403':
+  #         description: "Forbidden"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/ForbiddenDto'
+  #       '404':
+  #         description: "Not found"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/NotFoundDto'
+  #       '500':
+  #         description: "Internal Server Error"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/InternalErrorDto'
+
+  #   post:
+  #     tags:
+  #       - tournament
+  #     operationId: makeTournamentMakerTournament
+  #     summary: "Создать новую запись для организатора турнира"
+  #     requestBody:
+  #       description: "Данные для создания новой записи"
+  #       required: true
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/TournamentMakerTournamentRequest'
+  #     responses:
+  #       '201':
+  #         description: "Operation was successful"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/TournamentMakerTournamentResponse'
+  #       '400':
+  #         description: "Bad request"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/BadRequestDto'
+  #       '401':
+  #         description: "Unauthorized"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/UnauthorizedDto'
+  #       '403':
+  #         description: "Forbidden"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/ForbiddenDto'
+  #       '404':
+  #         description: "Not found"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/NotFoundDto'
+  #       '500':
+  #         description: "Internal Server Error"
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/InternalErrorDto'
+
+  /api/v1/tournaments_tournament_maker/{id}:
     get:
       tags:
         - tournament
-      operationId: getTournamentMakerTournaments
-      summary: "Получить все записи организаторов турниров"
+      operationId: getTournamentMakerByTournamentId
+      summary: "Get record by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            description: "Record ID"
       responses:
         '200':
-          description: "Успешно получены записи"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/TournamentMakerTournamentResponse'
-        '400':
-          description: "Bad request"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
-        '401':
-          description: "Unauthorized"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
-        '403':
-          description: "Forbidden"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
-        '404':
-          description: "Not found"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/NotFound404Dto'
-        '500':
-          description: "Internal Server Error"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/InternalError500Dto'
-
-    post:
-      tags:
-        - tournament
-      operationId: makeTournamentMakerTournament
-      summary: "Создать новую запись для организатора турнира"
-      requestBody:
-        description: "Данные для создания новой записи"
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TournamentMakerTournamentRequest'
-      responses:
-        '201':
           description: "Operation was successful"
           content:
             application/json:
@@ -601,7 +664,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -609,7 +672,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -617,7 +680,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -625,7 +688,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -633,83 +696,22 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
-
-  /api/v1/tournament_maker_tournament/{id}:
-    get:
-      tags:
-        - tournament
-      operationId: getTournamentMakerTournamentById
-      summary: "Получить запись по ID"
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: integer
-            description: "ID записи"
-      responses:
-        '200':
-          description: "Запись успешно получена"
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TournamentMakerTournamentResponse'
-        '400':
-          description: "Bad request"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
-        '401':
-          description: "Unauthorized"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
-        '403':
-          description: "Forbidden"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
-        '404':
-          description: "Not found"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/NotFound404Dto'
-        '500':
-          description: "Internal Server Error"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     put:
       tags:
         - tournament
       operationId: updateTournamentMakerTournament
-      summary: "Обновить запись по ID"
+      summary: "Update record by ID"
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: "ID записи"
+            description: "Record ID"
       requestBody:
-        description: "Данные для обновления записи"
+        description: "Data to update record"
         required: true
         content:
           application/json:
@@ -729,7 +731,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -737,7 +739,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -745,7 +747,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -753,7 +755,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -761,20 +763,20 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     delete:
       tags:
         - tournament
       operationId: removeTournamentMakerTournamentById
-      summary: "Удалить запись по ID"
+      summary: "Remove record by ID"
       parameters:
         - in: path
           name: id
           required: true
           schema:
             type: integer
-            description: "ID записи"
+            description: "Record ID"
       responses:
         '204':
           description: "Judge removed from the tournament part"
@@ -789,7 +791,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -797,7 +799,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -805,7 +807,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -813,7 +815,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -821,7 +823,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
 components:
   schemas:
@@ -843,10 +845,10 @@ components:
           type: string
         start_time:
           type: string
-          format: date
+          # format: date
         end_time:
           type: string
-          format: date
+          # format: date
         is_official:
           type: boolean
         participation_fee:
@@ -873,16 +875,18 @@ components:
           type: integer
         name:
           type: string
-        sport_id:
-          type: integer
+        # sport_id:
+        #   type: integer
+        sport:
+          type: string
         place:
           type: string
         start_time:
           type: string
-          format: date
+          # format: date
         end_time:
           type: string
-          format: date
+          # format: date
         is_official:
           type: boolean
         participation_fee:
@@ -906,10 +910,10 @@ components:
           type: string
         start_time:
           type: string
-          format: date-time
+          # format: date-time
         end_time:
           type: string
-          format: date-time
+          # format: date-time
         category_id:
           type: integer
         tournament_part_teams:
@@ -932,10 +936,10 @@ components:
           type: string
         start_time:
           type: string
-          format: date-time
+          # format: date-time
         end_time:
           type: string
-          format: date-time
+          # format: date-time
         category_id:
           type: integer
         tournament_part_teams:
@@ -976,8 +980,7 @@ components:
           type: integer
         status_id:
           type: integer
-          description: "ID статуса судьи"
-          
+          description: "Judge status ID"
     TournamentPartJudgeRequest:
       type: object
       required:
@@ -1002,9 +1005,9 @@ components:
         tournament_part_id:
           type: integer
         judge_id:
-          type: integer
-        judge_status_id:
-          type: integer
+          type: string
+        judge_status:
+          type: string
 
     TournamentMakerTournamentRequest:
       type: object
@@ -1014,10 +1017,8 @@ components:
       properties:
         tournament_maker_id:
           type: integer
-          description: "ID организатора турнира"
         tournament_id:
           type: integer
-          description: "ID турнира"
 
     TournamentMakerTournamentResponse:
       type: object
@@ -1028,12 +1029,10 @@ components:
           type: integer
         tournament_maker_id:
           type: integer
-          description: "ID организатора турнира"
         tournament_id:
           type: integer
-          description: "ID турнира"
 
-    BadRequest400Dto:
+    BadRequestDto:
       type: object
       properties:
         message:
@@ -1041,7 +1040,7 @@ components:
         code:
           type: integer
 
-    Unauthorized401Dto:
+    UnauthorizedDto:
       type: object
       properties:
         message:
@@ -1049,7 +1048,7 @@ components:
         code:
           type: integer
 
-    Forbidden403Dto:
+    ForbiddenDto:
       type: object
       properties:
         message:
@@ -1057,7 +1056,7 @@ components:
         code:
           type: integer
 
-    NotFound404Dto:
+    NotFoundDto:
       type: object
       properties:
         message:
@@ -1065,7 +1064,7 @@ components:
         code:
           type: integer
 
-    InternalError500Dto:
+    InternalErrorDto:
       type: object
       properties:
         message:

@@ -34,7 +34,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -42,7 +42,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -50,7 +50,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -58,7 +58,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -66,7 +66,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     post:
       tags:
@@ -93,7 +93,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -101,7 +101,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -109,7 +109,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -117,7 +117,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -125,7 +125,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
   /api/v1/season/{seasonId}:
     put:
@@ -159,7 +159,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -167,7 +167,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -175,7 +175,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -183,7 +183,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -191,7 +191,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     delete:
       tags:
@@ -218,7 +218,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -226,7 +226,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -234,7 +234,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -242,7 +242,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -250,7 +250,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
   /api/v1/season_tournament:
     get:
       tags:
@@ -273,7 +273,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -281,7 +281,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -289,7 +289,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -297,7 +297,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -305,7 +305,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     post:
       tags:
@@ -332,7 +332,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -340,7 +340,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -348,7 +348,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -356,7 +356,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -364,7 +364,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
   /api/v1/season_tournament/{seasonTournamentId}:
     put:
@@ -398,7 +398,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -406,7 +406,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -414,7 +414,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -422,7 +422,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -430,7 +430,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     delete:
       tags:
@@ -457,7 +457,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -465,7 +465,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -473,7 +473,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -481,7 +481,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -489,7 +489,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
   /api/v1/season_tournament_club:
     get:
@@ -513,7 +513,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -521,7 +521,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -529,7 +529,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -537,7 +537,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -545,7 +545,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
 
   /api/v1/season_tournament_club/{club_id}:
@@ -574,7 +574,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -582,7 +582,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -590,7 +590,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -598,7 +598,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -606,7 +606,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
   /api/v1/season_tournament_club/{seasonTournamentClubId}:
     put:
@@ -640,7 +640,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -648,7 +648,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -656,7 +656,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -664,7 +664,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -672,7 +672,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     delete:
       tags:
@@ -699,7 +699,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -707,7 +707,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -715,7 +715,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -723,7 +723,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -731,7 +731,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
   /api/v1/club:
     get:
@@ -755,7 +755,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -763,7 +763,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -771,7 +771,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -779,7 +779,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -787,7 +787,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     post:
       tags:
@@ -814,7 +814,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -822,7 +822,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -830,7 +830,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -838,7 +838,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -846,7 +846,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
   /api/v1/club/{clubId}:
     put:
@@ -880,7 +880,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -888,7 +888,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -896,7 +896,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -904,7 +904,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -912,7 +912,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
     delete:
       tags:
@@ -939,7 +939,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BadRequest400Dto'
+                  $ref: '#/components/schemas/BadRequestDto'
         '401':
           description: "Unauthorized"
           content:
@@ -947,7 +947,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Unauthorized401Dto'
+                  $ref: '#/components/schemas/UnauthorizedDto'
         '403':
           description: "Forbidden"
           content:
@@ -955,7 +955,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Forbidden403Dto'
+                  $ref: '#/components/schemas/ForbiddenDto'
         '404':
           description: "Not found"
           content:
@@ -963,7 +963,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NotFound404Dto'
+                  $ref: '#/components/schemas/NotFoundDto'
         '500':
           description: "Internal Server Error"
           content:
@@ -971,7 +971,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/InternalError500Dto'
+                  $ref: '#/components/schemas/InternalErrorDto'
 
 components:
   schemas:
@@ -1102,7 +1102,7 @@ components:
           type: string
           description: "Название клуба"
 
-    BadRequest400Dto:
+    BadRequestDto:
       type: object
       properties:
         message:
@@ -1110,7 +1110,7 @@ components:
         code:
           type: integer
 
-    Unauthorized401Dto:
+    UnauthorizedDto:
       type: object
       properties:
         message:
@@ -1118,7 +1118,7 @@ components:
         code:
           type: integer
 
-    Forbidden403Dto:
+    ForbiddenDto:
       type: object
       properties:
         message:
@@ -1126,7 +1126,7 @@ components:
         code:
           type: integer
 
-    NotFound404Dto:
+    NotFoundDto:
       type: object
       properties:
         message:
@@ -1134,7 +1134,7 @@ components:
         code:
           type: integer
 
-    InternalError500Dto:
+    InternalErrorDto:
       type: object
       properties:
         message:
