@@ -7,7 +7,6 @@ plugins {
     id("io.spring.dependency-management") version "1.1.6"
     id("io.gitlab.arturbosch.detekt") version "1.23.7"
     id("org.openapi.generator") version "7.8.0"
-    id("io.swagger.core.v3") version "2.2.23"
 }
 
 group = "SakiraBusinessLabs"
@@ -37,8 +36,8 @@ dependencies {
     implementation("org.postgresql:postgresql")
 
     // OpenApi
-    implementation("io.swagger.core.v3:swagger-models")
-    implementation("io.swagger.core.v3:swagger-annotations")
+    implementation("io.swagger.core.v3:swagger-models:2.2.23")
+    implementation("io.swagger.core.v3:swagger-annotations:2.2.23")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 
     // Test
@@ -71,7 +70,7 @@ val outputDirPath = "$buildDir/generated"
 
 // root points of openApiSpec
 val openApiSpecs = listOf(
-    "$rootDir/src/main/resources/openapi/v1/tournament.yaml",
+    "$rootDir/src/main/resources/openapi/tournament-storage/v1/scoring/scoring.yaml",
 )
 
 openApiSpecs.forEachIndexed { index, openApiSpec ->
