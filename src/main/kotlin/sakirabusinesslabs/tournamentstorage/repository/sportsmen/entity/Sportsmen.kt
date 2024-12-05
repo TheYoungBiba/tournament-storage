@@ -3,38 +3,40 @@ package sakirabusinesslabs.tournamentstorage.repository.sportsmen.entity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.PrimaryKeyJoinColumn
-import sakirabusinesslabs.tournamentstorage.repository.user.entity.Passport
+import jakarta.persistence.Table
 import sakirabusinesslabs.tournamentstorage.repository.user.entity.User
 import java.time.LocalDate
+import java.time.OffsetDateTime
 
 @Entity
+@Table(name = "sportsmen")
 @PrimaryKeyJoinColumn(name = "id")
 class Sportsmen(
-    login: String = "",
-    email: String = "",
-    phoneNumber: String = "",
-    photoId: String? = null,
-    firstName: String? = null,
-    lastName: String? = null,
-    patronymic: String? = null,
-    passport: Passport? = null,
-    password: String = "",
 
     @Column(nullable = false)
-    var birthday: LocalDate = LocalDate.MIN,
+    val birthday: LocalDate = LocalDate.now(),
 
     @Column(nullable = false)
-    var isMale: Boolean = true,
+    val is_male: String = "Male",
 
+    @Column(nullable = false)
+    val height: Float = 0f,
 
-): User(
-    login = login,
-    email = email,
-    phoneNumber = phoneNumber,
-    photoId = photoId,
-    firstName = firstName,
-    lastName = lastName,
-    patronymic = patronymic,
-    passport = passport,
-    password = password,
-)
+    @Column(nullable = false)
+    val height_updated_at: OffsetDateTime = OffsetDateTime.now(),
+
+    @Column(nullable = false)
+    val height_checked_at: OffsetDateTime = OffsetDateTime.now(),
+
+    @Column(nullable = false)
+    val weight: Float = 0f,
+
+    @Column(nullable = false)
+    val weight_updated_at: OffsetDateTime = OffsetDateTime.now(),
+
+    @Column(nullable = false)
+    val weight_checked_at: OffsetDateTime = OffsetDateTime.now(),
+
+    @Column(nullable = false)
+    val club_id: Int = 0
+) : User()
