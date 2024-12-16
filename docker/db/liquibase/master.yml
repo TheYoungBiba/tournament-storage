@@ -192,3 +192,10 @@ databaseChangeLog:
             relativeToChangelogFile: false
             splitStatements: true
             stripComments: true
+        - sqlFile:
+              dbms: postgresql
+              encoding: utf8
+              path: changelog/0_0_1/order/init_order_0_0_1.sql
+              relativeToChangelogFile: false
+              splitStatements: true
+              stripComments: true

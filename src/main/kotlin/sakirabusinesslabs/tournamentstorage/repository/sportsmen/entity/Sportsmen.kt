@@ -22,19 +22,19 @@ class Sportsmen(
     @Column(nullable = false)
     val height: Float = 0f,
 
-    @Column(nullable = false)
+    @Column
     val height_updated_at: OffsetDateTime = OffsetDateTime.now(),
 
-    @Column(nullable = false)
+    @Column
     val height_checked_at: OffsetDateTime = OffsetDateTime.now(),
 
     @Column(nullable = false)
     val weight: Float = 0f,
 
-    @Column(nullable = false)
+    @Column
     val weight_updated_at: OffsetDateTime = OffsetDateTime.now(),
 
-    @Column(nullable = false)
+    @Column
     val weight_checked_at: OffsetDateTime = OffsetDateTime.now(),
 
     @Column(nullable = false)

@@ -1,0 +1,6 @@
+package sakirabusinesslabs.tournamentstorage.repository.tournament.tournamentPart.tournamentPartTournamentPartTeam.TournamentPartTeam
+
+import org.springframework.data.jpa.repository.JpaRepository
+
+interface TournamentPartTeamRepository: JpaRepository<TournamentPartTeamRepository, Long> {
+}
