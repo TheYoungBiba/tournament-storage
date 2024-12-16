@@ -10,37 +10,59 @@ import java.time.LocalDate
 @RestController
 @Suppress("MagicNumber")
 class ScoringController : TournamentStorageApi {
-    override fun getAllSportsmenGames(id: Int, sport: String): ResponseEntity<List<SportsmenGame>> {
+
+    override fun getSportsmenGames(
+        sportsmenGamesRequest: SportsmenGamesRequest
+    ): ResponseEntity<List<SportsmenGamesResponse>> {
         return ResponseEntity(
-            listOf(SportsmenGame(id, 123, sport, true, 2)),
+            listOf(
+                SportsmenGamesResponse(
+                    sportsmenGamesRequest.id,
+                    123,
+                    sportsmenGamesRequest.sport,
+                    true,
+                    2
+                )
+            ),
             HttpStatus.OK
         )
     }
 
-    override fun getGamesLastPeriod(id: Int, sport: String, period: Int): ResponseEntity<List<SportsmenGame>> {
+    override fun getSportsmenInfo(
+        sportsmenInfoRequest: SportsmenInfoRequest
+    ): ResponseEntity<SportsmenInfoResponse> {
         return ResponseEntity(
-            listOf(SportsmenGame(id, 123, sport, true, 2)),
+            SportsmenInfoResponse(
+                sportsmenInfoRequest.id,
+                sportsmenInfoRequest.sport,
+                true,
+                LocalDate.of(2004, 12, 29),
+                80.5,
+                1.82
+            ),
             HttpStatus.OK
         )
     }
 
-    override fun getSanctionLastYear(id: Int, sport: String, period: Int): ResponseEntity<List<SportsmenSanction>> {
+    override fun getSportsmenSanctions(
+        sportsmenSanctionsRequest: SportsmenSanctionsRequest
+    ): ResponseEntity<List<SportsmenSanctionsResponse>> {
         return ResponseEntity(
-            listOf(SportsmenSanction(id, 321)),
+            listOf(
+                SportsmenSanctionsResponse(
+                    sportsmenSanctionsRequest.id,
+                    321
+                )
+            ),
             HttpStatus.OK
         )
     }
 
-    override fun getSportsmenInfo(id: Int, sport: String): ResponseEntity<SportsmenInfoResponse> {
+    override fun updateSportsmenRate(
+        sportsmenRateRequest: SportsmenRateRequest
+    ): ResponseEntity<SportsmenRateResponse> {
         return ResponseEntity(
-            SportsmenInfoResponse(id, sport, true, LocalDate.of(2004, 12, 29), 80.5, 1.82),
-            HttpStatus.OK
-        )
-    }
-
-    override fun updateSportsmenRate(id: Int, sport: String, rate: Double): ResponseEntity<SportsmenResponseDto> {
-        return ResponseEntity(
-            SportsmenResponseDto(0, ""),
+            SportsmenRateResponse(0),
             HttpStatus.OK
         )
     }
