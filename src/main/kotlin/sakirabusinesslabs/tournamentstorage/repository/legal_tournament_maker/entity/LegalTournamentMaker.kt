@@ -1,9 +1,9 @@
 package sakirabusinesslabs.tournamentstorage.repository.legal_tournament_maker.entity
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.PrimaryKeyJoinColumn
-import jakarta.persistence.Table
+import jakarta.persistence.*
+import org.hibernate.annotations.OnDelete
+import org.hibernate.annotations.OnDeleteAction
+import sakirabusinesslabs.tournamentstorage.repository.organization.entity.Organization
 import sakirabusinesslabs.tournamentstorage.repository.user.entity.User
 import java.time.LocalDate
 import java.time.OffsetDateTime
@@ -13,6 +13,8 @@ import java.time.OffsetDateTime
 @PrimaryKeyJoinColumn(name = "id")
 class LegalTournamentMaker(
 
-    @Column(name = "organization_id")
-    var organization_id: Long
+    @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "organization_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    var organization: Organization
 ) : User()

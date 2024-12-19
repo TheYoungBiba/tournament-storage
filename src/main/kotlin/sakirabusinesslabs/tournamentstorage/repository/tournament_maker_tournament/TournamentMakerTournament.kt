@@ -1,0 +1,4 @@
+package sakirabusinesslabs.tournamentstorage.repository.tournament_maker_tournament
+
+interface TournamentMakerTournament {
+}
