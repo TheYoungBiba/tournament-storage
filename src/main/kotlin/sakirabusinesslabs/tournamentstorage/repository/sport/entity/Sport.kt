@@ -10,7 +10,7 @@ import jakarta.persistence.Table
 class Sport (
 
     @Id
-    var id: Long,
+    var id: Int = 0,
 
     @Column(name = "name", nullable = false, length = 128)
     var name: String,

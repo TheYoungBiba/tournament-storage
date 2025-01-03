@@ -1,20 +1,30 @@
 package sakirabusinesslabs.tournamentstorage.repository.tournament.tournamentPart.tournamentPartTournamentPartTeam.entity
 
 import jakarta.persistence.*
+import org.hibernate.annotations.OnDelete
+import org.hibernate.annotations.OnDeleteAction
+import sakirabusinesslabs.tournamentstorage.repository.tournament.tournamentPart.entity.TournamentPart
+import sakirabusinesslabs.tournamentstorage.repository.tournament.tournamentPart.tournamentPartTournamentPartTeam.tournamentPartTeam.entity.TournamentPartTeam
 
 @Entity
 @Table(name = "tournament_part_tournament_part_team")
-@IdClass(TournamentPartTournamentPartTeamId::class)
-data class TournamentPartTournamentPartTeam(
+class TournamentPartTournamentPartTeam(
 
-    @Id
-    @Column(name = "tournament_part_id", nullable = false)
-    var tournamentPartId: Long = 0,
+    @EmbeddedId
+    var tournamentPartTournamentPartTeamId: TournamentPartTournamentPartTeamId? = null,
 
-    @Id
-    @Column(name = "tournament_part_team_id", nullable = false)
-    var tournamentPartTeamId: Long = 0,
+    @MapsId("tournamentPartId")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "tournament_part_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    var tournamentPart: TournamentPart? = null,
 
-    @Column(nullable = true)
-    var result: Int = 0
+    @MapsId("tournamentPartTeamId")
+    @ManyToOne(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
+    @JoinColumn(name = "tournament_part_team_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    var tournamentPartTeam: TournamentPartTeam? = null,
+
+    @Column(name = "result")
+    var result: Int? = 0
 )

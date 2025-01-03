@@ -1,0 +1,4 @@
+package sakirabusinesslabs.tournamentstorage.repository.sportsman_sanction
+
+interface SportsmanSanctionRepository {
+}

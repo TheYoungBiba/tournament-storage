@@ -1,11 +1,10 @@
 package sakirabusinesslabs.tournamentstorage.repository.tournament_maker_tournament.entity
 
-import sakirabusinesslabs.tournamentstorage.repository.organization.entity.Organization
-import sakirabusinesslabs.tournamentstorage.repository.organization_allowed_sport.entity.OrganizationAllowedSport
-import sakirabusinesslabs.tournamentstorage.repository.tournament.entity.Tournament
+import jakarta.persistence.Embeddable
 import java.io.Serializable
 
+@Embeddable
 data class TournamentMakerTournamentId(
-    var tournament: Tournament,
-//    var tournamentMaker: User
+    var tournamentId: Int = 0,
+    var tournamentMakerId: Int = 0
 ) : Serializable

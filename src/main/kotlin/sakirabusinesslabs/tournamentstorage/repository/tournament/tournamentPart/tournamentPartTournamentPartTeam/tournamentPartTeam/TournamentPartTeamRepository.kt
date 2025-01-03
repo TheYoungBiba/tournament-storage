@@ -1,4 +1,4 @@
-package sakirabusinesslabs.tournamentstorage.repository.tournament.tournamentPart.tournamentPartTournamentPartTeam.TournamentPartTeam
+package sakirabusinesslabs.tournamentstorage.repository.tournament.tournamentPart.tournamentPartTournamentPartTeam.tournamentPartTeam
 
 import org.springframework.data.jpa.repository.JpaRepository
 

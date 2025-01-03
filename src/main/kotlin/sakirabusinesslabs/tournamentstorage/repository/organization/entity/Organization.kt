@@ -10,7 +10,7 @@ import jakarta.persistence.Table
 class Organization (
 
     @Id
-    var id: Long,
+    var id: Int = 0,
 
     @Column(nullable = false, length = 256)
     var name: String,

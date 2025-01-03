@@ -44,10 +44,21 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
-configurations.all {
-    resolutionStrategy.eachDependency {
-        if (requested.group == "org.jetbrains.kotlin") {
-            useVersion(io.gitlab.arturbosch.detekt.getSupportedKotlinVersion())
+//configurations.all {
+//    resolutionStrategy.eachDependency {
+//        if (requested.group == "org.jetbrains.kotlin") {
+//            useVersion(io.gitlab.arturbosch.detekt.getSupportedKotlinVersion())
+//        }
+//    }
+//}
+
+dependencyManagement {
+    configurations.matching { it.name == "detekt" }.all {
+        resolutionStrategy.eachDependency {
+            if (requested.group == "org.jetbrains.kotlin") {
+                useVersion(io.gitlab.arturbosch.detekt.getSupportedKotlinVersion())
+
+            }
         }
     }
 }

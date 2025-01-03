@@ -9,13 +9,14 @@ import sakirabusinesslabs.tournamentstorage.repository.sport.entity.Sport
 @Table(name = "category")
 class Category(
     @Id
-    var id: Long,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Int? = null,
 
     @Column(nullable = true, length = 64)
-    var name: String,
+    var name: String = "",
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     @JoinColumn(name = "sport_id")
     @OnDelete(action = OnDeleteAction.SET_NULL)
-    var sport: Sport
+    var sport: Sport? = null
 )

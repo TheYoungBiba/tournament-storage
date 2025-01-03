@@ -4,14 +4,16 @@ import jakarta.persistence.*
 import org.hibernate.annotations.OnDelete
 import org.hibernate.annotations.OnDeleteAction
 import sakirabusinesslabs.tournamentstorage.repository.tournament.tournamentPart.entity.TournamentPart
+import java.math.BigDecimal
 import java.time.LocalDate
+import java.util.Date
 
 @Entity
 @Table(name = "tournament")
 data class Tournament (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0,
+    var id: Int = 0,
 
     @Column(nullable = false, unique = true, length = 128)
     var name: String = "",
@@ -23,16 +25,16 @@ data class Tournament (
     var place: String = "",
 
     @Column(name = "start_time")
-    var startTime: LocalDate = LocalDate.now(),
+    var startTime: Date? = null,
 
     @Column(name = "end_time")
-    var endTime: LocalDate = LocalDate.now(),
+    var endTime: Date? = null,
 
     @Column(name = "is_official")
     var isOfficial: Boolean = false,
 
     @Column(name = "participation_fee")
-    var participationFee: Float = 0f,
+    var participationFee: BigDecimal? = null,
 
     @OneToMany(fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
     @JoinColumn(name = "tournament_id")
