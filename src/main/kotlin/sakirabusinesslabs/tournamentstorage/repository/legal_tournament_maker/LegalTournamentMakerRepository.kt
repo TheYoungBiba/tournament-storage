@@ -3,5 +3,5 @@ package sakirabusinesslabs.tournamentstorage.repository.legal_tournament_maker
 import org.springframework.data.jpa.repository.JpaRepository
 import sakirabusinesslabs.tournamentstorage.repository.legal_tournament_maker.entity.LegalTournamentMaker
 
-interface LegalTournamentMakerRepository: JpaRepository<LegalTournamentMaker, Long> {
+interface LegalTournamentMakerRepository: JpaRepository<LegalTournamentMaker, Int> {
 }

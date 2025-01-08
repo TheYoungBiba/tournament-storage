@@ -35,8 +35,11 @@ data class TournamentPart(
     @OnDelete(action = OnDeleteAction.SET_NULL)
     var category: Category? = null,
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
-    @OnDelete(action = OnDeleteAction.SET_NULL)
-    @JoinColumn(name = "tournament_part_tournament_part_team", nullable = false)
+//    @OneToMany(fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
+//    @OnDelete(action = OnDeleteAction.SET_NULL)
+//    @JoinColumn(name = "tournament_part_tournament_part_team", nullable = false)
+//    var tournamentPartTournamentPartTeam: List<TournamentPartTournamentPartTeam>? = null
+    @OneToMany(mappedBy = "tournamentPart", fetch = FetchType.LAZY, cascade = [CascadeType.ALL])
     var tournamentPartTournamentPartTeam: List<TournamentPartTournamentPartTeam>? = null
+
 )

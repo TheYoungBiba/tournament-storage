@@ -2,5 +2,5 @@ package sakirabusinesslabs.tournamentstorage.repository.tournament.tournamentPar
 
 import org.springframework.data.jpa.repository.JpaRepository
 
-interface TournamentPartTeamRepository: JpaRepository<TournamentPartTeamRepository, Long> {
+interface TournamentPartTeamRepository{//: JpaRepository<TournamentPartTeamRepository, Int> {
 }
