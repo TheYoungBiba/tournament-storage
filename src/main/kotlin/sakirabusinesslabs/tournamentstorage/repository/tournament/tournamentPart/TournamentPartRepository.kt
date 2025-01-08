@@ -1,0 +1,4 @@
+package sakirabusinesslabs.tournamentstorage.repository.tournament.tournamentPart
+
+interface TournamentPartRepository {
+}

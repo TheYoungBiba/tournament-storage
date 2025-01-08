@@ -1,0 +1,4 @@
+package sakirabusinesslabs.tournamentstorage.repository.sportsman_sport
+
+interface SportsmanSportRepository {
+}

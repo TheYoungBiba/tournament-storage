@@ -1,0 +1,4 @@
+package sakirabusinesslabs.tournamentstorage.repository.organization_allowed_sport
+
+interface OrganizationAllowedSportRepository {
+}

@@ -11,7 +11,7 @@ open class User(
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long = 0,
+    open var id: Int = 0,
 
     @Column(nullable = false, unique = true, length = 128)
     var login: String = "",

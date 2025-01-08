@@ -1,0 +1,4 @@
+package sakirabusinesslabs.tournamentstorage.repository.season_tournament_club
+
+interface SeasonTournamentClub {
+}

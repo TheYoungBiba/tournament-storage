@@ -8,7 +8,7 @@ data class Passport(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    val id: Long = 0,
+    val id: Int = 0,
 
     @Column(name = "series", nullable = false, length = 4)
     var series: String = "",
