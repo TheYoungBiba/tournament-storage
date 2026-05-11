@@ -55,6 +55,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation(kotlin("script-runtime"))
 }
 
 kotlin {
@@ -77,22 +78,28 @@ dependencyManagement {
     }
 }
 
+data class OpenApiContract(val gradleTaskName: String, val specPathSuffix: String, val generatedPackageName: String) {
+    val specPath: String
+        get() = "$rootDir/src/main/resources/openapi/tournament-storage/v1/$specPathSuffix"
+}
 
-var buildDir: File = project.layout.buildDirectory.get().asFile
-val outputDirPath = "$buildDir/generated"
-
-// root points of openApiSpec
 val openApiSpecs = listOf(
-    "$rootDir/src/main/resources/openapi/v1/tournament.yaml",
+    OpenApiContract("generateTournamentApi", "tournament/tournament.yaml", "tournament"),
+    OpenApiContract("generateUserApi", "user/user.yaml", "user"),
+    OpenApiContract("generateSportsmenApi", "sportsmen/sportsmen.yaml", "sportsmen"),
+    OpenApiContract("generateSeasonApi", "season/season.yaml", "season"),
+    OpenApiContract("generatePersonDataApi", "personData/person-data.yaml", "personData")
 )
 
-openApiSpecs.forEachIndexed { index, openApiSpec ->
-    val openApiGenerateInterface = tasks.register<GenerateTask>("OpenApiGenerateInterface$index") {
+val outputDirPath = "${project.layout.buildDirectory.get().asFile}/generated"
+
+openApiSpecs.forEach {
+    val openApiGenerateInterface = tasks.register<GenerateTask>(it.gradleTaskName) {
         generatorName.set("kotlin-spring")
-        inputSpec.set(openApiSpec)
+        inputSpec.set(it.specPath)
         outputDir.set(outputDirPath)
-        apiPackage.set("ru.tournament.api")
-        modelPackage.set("ru.tournament.model")
+        apiPackage.set("ru.tournament.${it.generatedPackageName}.interfaces")
+        modelPackage.set("ru.tournament.${it.generatedPackageName}.dto")
 
         generateApiTests.set(false)
         generateModelTests.set(false)
@@ -111,39 +118,13 @@ openApiSpecs.forEachIndexed { index, openApiSpec ->
         )
     }
 
-    val openApiGenerateClient = tasks.register<GenerateTask>("OpenApiGenerateClient$index") {
-        generatorName.set("kotlin")
-        inputSpec.set(openApiSpec)
-        outputDir.set(outputDirPath)
-        apiPackage.set("ru.tournament.client")
-        modelPackage.set("ru.tournament.model")
-
-        generateApiTests.set(false)
-        generateModelTests.set(false)
-        generateApiDocumentation.set(false)
-        generateModelDocumentation.set(false)
-
-        configOptions.putAll(
-            mapOf(
-                "useTags" to "false",
-                "library" to "jvm-spring-webclient",
-                "dateLibrary" to "java8",
-                "serializationLibrary" to "jackson",
-                "useSpringBoot3" to "true",
-                "apiSuffix" to "StorageApiClient",
-            )
-        )
-    }
-
     tasks.named("compileKotlin") {
         dependsOn(openApiGenerateInterface)
-        dependsOn(openApiGenerateClient)
     }
 }
 
-
 sourceSets.main {
     java {
-        srcDir("$buildDir/generated/src/main/kotlin")
+        srcDir("$outputDirPath/src/main/kotlin")
     }
 }

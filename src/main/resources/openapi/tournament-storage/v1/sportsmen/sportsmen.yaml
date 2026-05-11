@@ -1,0 +1,1327 @@
+openapi: 3.0.2
+info:
+  title: "tournament-storage"
+  description: "It's easy to manage your sport tournament or league"
+  version: "1.0"
+  contact:
+    name: "SportManager"
+    url: "https://sportmanager.com/support"
+    email: "sportmanager@gmail.com"
+tags:
+  - name: sportsmen
+    description: "Everything about sportsmen"
+
+paths:
+  /api/v1/users/sportsmen:
+    get:
+      tags:
+        - sportsmen
+      operationId: getSportsmen
+      summary: "Show all the existed sportsmen"
+      description: "To get list of every sportsman from database"
+      responses:
+        '200':
+          description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SportsmenResponse'  #Не понимаю как возвращать информацию о спортсмене с айди без информациии о юзере (Придумал сделать еще одну компоненту SportsmenInfo, но с доп полем - id)
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+    post:
+      tags:
+        - sportsmen
+      operationId: makeSportsman
+      summary: "To make sportsman"
+      requestBody:
+        description: "The sportsmen data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenRequest'
+      responses:
+        '201':
+          description: "Role was added successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+  /api/v1/users/{id}/sportsmen:
+    post:
+      tags:
+        - sportsmen
+      operationId: addSportsmanRoleByUserId 
+      summary: "To add sportsman role for user"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The sportsmen data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenInfo'
+      responses:
+        '201':
+          description: "Role was added successful"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  tournament_maker_info:
+                    $ref: '#/components/schemas/SportsmenInfo'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+          
+    delete:
+      tags:
+        - user
+      operationId: removeSportsmanRoleById
+      summary: "To delete sportsman role by id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "User id"
+      responses:
+        '204':
+         description: "Removable was successful"
+         content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  tournament_maker_info:
+                    $ref: '#/components/schemas/SportsmenInfo'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+         
+  /api/v1/users/sportsmen_sport/{id}:
+    post:
+      tags:
+        - sportsmen
+      operationId: addNewSportForSportsmanById
+      summary: "To add sportsman to new sport"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "Sportsman id"
+      requestBody:
+        description: "The sportsman data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenSportRequest'
+      responses:
+        '201':
+          description: "Opearation was successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSportResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+
+  /api/v1/users/{id}/sportsmen_sport:
+    get:
+      tags:
+        - sportsmen
+      operationId: getSportsmanSportById
+      summary: "To get sportsman data by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Operation was successfful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSportResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+    put:
+      tags:
+        - sportsmen
+      operationId: updateSportsmanSportById
+      summary: "To update sportsman data in sport by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "The updated sportsman data"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenSportRequest'
+      responses:
+        '201':
+          description: "Operation was successful"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSportResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+    delete:
+      tags:
+        - user
+      operationId: removeSportsmanFromSportById
+      summary: "To remove sportsman from sport by ID"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: "Sportsman was removed from sport"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSportResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+  /api/v1/users/sportsmen_sport/sportsmen_achievements:
+    post:
+      tags:
+        - sportsmen
+      summary: "To add new sportsmen achievement"
+      operationId: createSportsmenAchievement
+      requestBody:
+        description: "The details about achievement"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenAchievementRequest'
+      responses:
+        '201':
+          description: "The achievement was added"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenAchievementResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+  /api/v1/users/{id}/sportsmen_sport/sportsmen_achievements:
+    get:
+      tags:
+        - sportsmen
+      operationId: getSportsmanAchievements
+      summary: "To get the sportsman achievements by sportsmen_id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "sportsmen_id"
+      responses:
+        '200':
+          description: "Achievement was found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SportsmenAchievementResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+    put:
+      tags:
+        - sportsmen
+      # operationId: updateSportsmanAchievementBySportsmenAchievementId
+      operationId: updateSportsmanAchievementById
+      summary: "To update the sportsman achievement by sportsmen_achievement_id"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "Id from sportsmen_achievement table"
+      requestBody:
+        description: "Updated data about achievement"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenAchievementRequest'
+      responses:
+        '201':
+          description: "The achievement was updated"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenAchievementResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+        
+    delete:
+      tags:
+        - sportsmen
+      operationId: removeSportsmanAchievementById
+      summary: "To delete sportsmen achievement by id from sportsmen_achievement table"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: "The achievement was removed"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenAchievementResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+  /api/v1/users/sportsmen/sportsmen_sanction:
+    post:
+      tags:
+        - sportsmen
+      operationId: createSanction
+      summary: "Add a sanction to a sportsman"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenSanctionRequest'
+      responses:
+        '201':
+          description: "Sanction was added to sportsman"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSanctionResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+    get:
+      tags:
+        - sportsmen
+      operationId: getSanctions
+      summary: "Get all sanctions for all sportsmen"
+      responses:
+        '200':
+          description: "List of all sportsmen sanctions"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SportsmenSanctionResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+  /api/v1/users/{id}/sportsmen/sportsmen_sanction:
+    get:
+      tags:
+        - sportsmen
+      operationId: getSanctionsBySportsmenId
+      summary: "Get sanctions for a specific sportsman"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "ID of the sportsman"
+      responses:
+        '200':
+          description: "Sanctions for the sportsman"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSanctionResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+    put:
+      tags:
+        - sportsmen
+      operationId: updateSanctionBySportsmenId
+      summary: "Update sanctions for a sportsman"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: "Updated data for sanctions"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SportsmenSanctionRequest'
+      responses:
+        '200':
+          description: "Sanctions were successfully updated"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSanctionResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+    delete:
+      tags:
+        - sportsmen
+      operationId: removeSanctionBySportsmenId
+      summary: "Remove sanctions from a sportsman"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "ID of the sportsman"
+      responses:
+        '204':
+          description: "Sanction was successfully removed"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SportsmenSanctionResponse'
+        '400':
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BadRequestDto'
+        '401':
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UnauthorizedDto'
+        '403':
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ForbiddenDto'
+        '404':
+          description: "Not found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NotFoundDto'
+        '500':
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InternalErrorDto'
+
+components:
+  schemas:
+    UserInfo:
+      type: object
+      required:
+        - login
+        - email
+        - phone_number
+        - password
+      properties:
+        login:
+          type: string
+        email:
+          type: string
+          format: email
+        phone_number:
+          type: string
+        photo_id:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        patronymic:
+          type: string
+        password:
+          type: string
+          
+    SportsmenInfo:
+      type: object
+      required:
+        - user_id
+        - birthday
+        - is_male
+      properties:
+        birthday:
+          type: string
+          format: date
+        is_male:
+          type: boolean
+        height:
+          type: number
+          format: float
+        height_updated_at:
+          type: string
+          format: date-time
+        height_checked_at:
+          type: string
+          format: date-time
+        weight:
+          type: number
+          format: float
+        weight_updated_at:
+          type: string
+          format: date-time
+        weight_checked_at:
+          type: string
+          format: date-time
+        club_id:
+          type: integer
+
+    SportsmenRequest:
+      type: object
+      required:
+        - user_info
+        - sportsmen_info
+      properties:
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/SportsmenInfo'
+
+    SportsmenResponse:
+      type: object
+      required:
+        - id
+        - user_info
+        - sportsmen_info
+      properties:
+        id:
+          type: integer
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+        sportsmen_info:
+          $ref: '#/components/schemas/SportsmenInfo'
+          
+    SportsmenSportRequest:
+      type: object
+      required:
+        - sport_id
+        - sportsmen_id
+        - rating
+      properties:
+        sport_id:
+          type: integer
+        sportsmen_id:
+          type: integer
+        category_id:
+          type: integer
+        role_id:
+          type: integer
+        rank:
+          type: string
+        license:
+          type: string
+        rating:
+          type: number
+          format: float
+          
+    SportsmenSportResponse:
+      type: object
+      required:
+        - id
+        - sport_id
+        - sportsmen_id
+        - rating
+      properties:
+        id:
+          type: integer
+        sport_id:
+          type: integer
+        sportsmen_id:
+          type: integer
+        category_id:
+          type: integer
+        role_id:
+          type: integer
+        rank:
+          type: string
+        license:
+          type: string
+        rating:
+          type: number
+          format: float
+          
+    SportsmenAchievementRequest:
+      type: object
+      required:
+        - sportsmen_sport_id
+        - place
+        - achieved_at_year
+      properties:
+        sportsmen_sport_id:
+          type: integer
+        place:
+          type: integer
+        tournament_id:
+          type: integer
+        achieved_with_category_id:
+          type: integer
+        description:
+          type: string
+        achieved_at_year:
+          type: string
+          format: date
+
+    SportsmenAchievementResponse:
+      type: object
+      required:
+        - id
+        - sportsmen_sport_id
+        - place
+        - achieved_at_year
+      properties:
+        id:
+          type: integer
+        sportsmen_sport_id:
+          type: integer
+        place:
+          type: integer
+        tournament_id:
+          type: integer
+        achieved_with_category_id:
+          type: integer
+        description:
+          type: string
+        achieved_at_year:
+          type: string
+          format: date
+          
+    SportsmenSanctionRequest:
+      type: object
+      required:
+        - sportsmen_id
+        - sanction_id
+      properties:
+        sportsmen_id:
+          type: integer
+          description: "ID of the sportsman"
+        sanction_id:
+          type: integer
+          description: "ID of the sanction"
+        disqualification:
+          type: string
+          format: date
+          description: "Disqualification date, if applicable"
+
+    SportsmenSanctionResponse:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+        sportsmen_id:
+          type: integer
+        sanction_id:
+          type: integer
+        disqualification:
+          type: string
+          format: date        
+
+    BadRequestDto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    UnauthorizedDto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    ForbiddenDto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    NotFoundDto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
+
+    InternalErrorDto:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: integer
